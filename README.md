@@ -2,7 +2,7 @@
 
 Code for Analyses and Figures from Espin et al. paper (geographic diversity on editorial boards).
 
-Requires
+Requires the following datasets:
 1. v2 of the data package from Cho et al 2014: http://datadryad.org/resource/doi:10.5061/dryad.6jn86/1
 2. Data collected by Espin et al (to be deposited at Dryad upon MS acceptance)
 3. 2014 World Bank data on the national income category and geographic region to whihc each country belongs (in this repo)
