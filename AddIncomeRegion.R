@@ -1,7 +1,7 @@
 AddIncomeRegion <- function(DATASET) {
   
   # IMPORT WORLD BANK INDICATORS (downloaded 2/Dec/2015)
-  WDI_data<-read.csv("./SupplementaryData/WDI_data.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
+  WDI_data<-read.csv("./Data/WDI_data.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
   row.names(WDI_data) <- WDI_data$iso3c     #Assigning row names in table for later search
   
   #These lines add the income level and region level based on the editor country

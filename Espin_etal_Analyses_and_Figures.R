@@ -39,7 +39,7 @@ Cho<-read.csv("./Data/Drayd.Cho.v2.csv", dec=".", header = TRUE, sep = ",", chec
 Espin<-read.csv("./Data/Drayd.Espin.v1.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
 
 #Bind the datasets together
-ALLDATA<-bind_rows(Drayd.Cho.v2,Drayd.Espin.v1)
+ALLDATA<-bind_rows(Drayd_Cho_v2,Drayd_Espin_v1)
 
 #Add the ISO Code for the country in which editor's are based 
 source("Country.Codes.R")
@@ -73,7 +73,7 @@ AnalysisData<-ALLDATA[ALLDATA$YEAR>=FirstYear & ALLDATA$YEAR<=LastYear,]
 AnalysisData <- AnalysisData[AnalysisData$CATEGORY %in% c('EIC', 'AE', 'SE', 'SPECIAL'),]
 
 # delete unused columns 
-AnalysisData<-AnalysisData %>% select(-INSTITUTION,-NOTES,-GENDER, -VOLUME, -ISSUE, -TITLE, -INSTITUTION)
+AnalysisData<-AnalysisData %>% select(-NOTES,-GENDER, -VOLUME, -ISSUE, -TITLE)
 
 # Convert editor ID to type: factor
 AnalysisData$editor_id<-as.factor(AnalysisData$editor_id)
@@ -212,31 +212,31 @@ IncomePlot
 
 
 # Convert Journal Codes to Journal Names (for figures and analyses)
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="BITR"] <- "Biotropica"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="PLANTECOL"] <- "Plant Ecology"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="AGRONOMY"] <- "Agronomy Journal"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="AJB"] <- "American J. Botany"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="CONBIO"] <- "Conservation Biology"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="ECOLOGY"] <- "Ecology"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="BIOCON"] <- "Biological Conservation"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="JECOL"] <- "J. of Ecology"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="JTE"] <- "J. Tropical Ecology"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="AMNAT"] <- "American Naturalist"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="JBIOG"] <- "J. Biogeography"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="ECOGRAPHY"] <- "Ecography"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="EVOL"] <- "Evolution"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="FEM"] <- "Forest Ecology & Managment"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="FUNECOL"] <- "Functional Ecology"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="LECO"] <- "Landscape Ecology"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="JZOOL"] <- "J. Zoology"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="JAPE"] <- "J. Applied Ecology"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="JANE"] <- "J. Animal Ecology"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="NEWPHYT"] <- "New Phytologist"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="OECOL"] <- "Oecologia"
-levels(AnalysisData$JOURNAL)[levels(AnalysisData$JOURNAL)=="OIKOS"] <- "Oikos"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="BITR"] <- "Biotropica"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="PLANTECOL"] <- "Plant Ecology"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="AGRONOMY"] <- "Agronomy Journal"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="AJB"] <- "American J. Botany"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="CONBIO"] <- "Conservation Biology"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="ECOLOGY"] <- "Ecology"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="BIOCON"] <- "Biological Conservation"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="JECOL"] <- "J. of Ecology"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="JTE"] <- "J. Tropical Ecology"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="AMNAT"] <- "American Naturalist"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="JBIOG"] <- "J. Biogeography"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="ECOGRAPHY"] <- "Ecography"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="EVOL"] <- "Evolution"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="FEM"] <- "Forest Ecology & Managment"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="FUNECOL"] <- "Functional Ecology"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="LECO"] <- "Landscape Ecology"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="JZOOL"] <- "J. Zoology"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="JAPE"] <- "J. Applied Ecology"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="JANE"] <- "J. Animal Ecology"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="NEWPHYT"] <- "New Phytologist"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="OECOL"] <- "Oecologia"
+AnalysisData$JOURNAL[AnalysisData$JOURNAL=="OIKOS"] <- "Oikos"
+
+AnalysisData$JOURNAL<-as.factor(AnalysisData$JOURNAL)
 #############################################################
-
-
 
 
 ##############################################################
