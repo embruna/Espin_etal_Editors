@@ -1,0 +1,216 @@
+,iso3c,iso2c,country,region_WDI,region,capital,longitude,latitude,income,lending
+50,ASM,AS,American Samoa,East Asia & Pacific (all income levels),East Asia & Pacific,Pago Pago,-170.691,-14.2846,Upper middle income,Not classified
+51,AUS,AU,Australia,East Asia & Pacific (all income levels),East Asia & Pacific,Canberra,149.129,-35.282,High income: OECD,Not classified
+52,BRN,BN,Brunei Darussalam,East Asia & Pacific (all income levels),East Asia & Pacific,Bandar Seri Begawan,114.946,4.94199,High income: nonOECD,Not classified
+53,CHN,CN,China,East Asia & Pacific (all income levels),East Asia & Pacific,Beijing,116.286,40.0495,Upper middle income,IBRD
+54,FJI,FJ,Fiji,East Asia & Pacific (all income levels),East Asia & Pacific,Suva,178.399,-18.1149,Upper middle income,IBRD
+55,FSM,FM,"Micronesia, Fed. Sts.",East Asia & Pacific (all income levels),East Asia & Pacific,Palikir,158.185,6.91771,Lower middle income,IDA
+56,GUM,GU,Guam,East Asia & Pacific (all income levels),East Asia & Pacific,Agana,144.794,13.4443,High income: nonOECD,Not classified
+57,HKG,HK,"Hong Kong SAR, China",East Asia & Pacific (all income levels),East Asia & Pacific,,114.109,22.3964,High income: nonOECD,Not classified
+58,IDN,ID,Indonesia,East Asia & Pacific (all income levels),East Asia & Pacific,Jakarta,106.83,-6.19752,Lower middle income,IBRD
+59,JPN,JP,Japan,East Asia & Pacific (all income levels),East Asia & Pacific,Tokyo,139.77,35.67,High income: OECD,Not classified
+60,KHM,KH,Cambodia,East Asia & Pacific (all income levels),East Asia & Pacific,Phnom Penh,104.874,11.5556,Low income,IDA
+61,KIR,KI,Kiribati,East Asia & Pacific (all income levels),East Asia & Pacific,Tarawa,172.979,1.32905,Lower middle income,IDA
+62,KOR,KR,"Korea, Rep.",East Asia & Pacific (all income levels),East Asia & Pacific,Seoul,126.957,37.5323,High income: OECD,IBRD
+63,LAO,LA,Lao PDR,East Asia & Pacific (all income levels),East Asia & Pacific,Vientiane,102.177,18.5826,Lower middle income,IDA
+64,MAC,MO,"Macao SAR, China",East Asia & Pacific (all income levels),East Asia & Pacific,,113.55,22.1667,High income: nonOECD,Not classified
+65,MHL,MH,Marshall Islands,East Asia & Pacific (all income levels),East Asia & Pacific,Majuro,171.135,7.11046,Upper middle income,IDA
+66,MMR,MM,Myanmar,East Asia & Pacific (all income levels),East Asia & Pacific,Naypyidaw,95.9562,21.914,Lower middle income,IDA
+67,MNG,MN,Mongolia,East Asia & Pacific (all income levels),East Asia & Pacific,Ulaanbaatar,106.937,47.9129,Upper middle income,Blend
+68,MNP,MP,Northern Mariana Islands,East Asia & Pacific (all income levels),East Asia & Pacific,Saipan,145.765,15.1935,High income: nonOECD,Not classified
+69,MYS,MY,Malaysia,East Asia & Pacific (all income levels),East Asia & Pacific,Kuala Lumpur,101.684,3.12433,Upper middle income,IBRD
+70,NCL,NC,New Caledonia,East Asia & Pacific (all income levels),East Asia & Pacific,Noum'ea,166.464,-22.2677,High income: nonOECD,Not classified
+71,NZL,NZ,New Zealand,East Asia & Pacific (all income levels),East Asia & Pacific,Wellington,174.776,-41.2865,High income: OECD,Not classified
+72,PHL,PH,Philippines,East Asia & Pacific (all income levels),East Asia & Pacific,Manila,121.035,14.5515,Lower middle income,IBRD
+73,PLW,PW,Palau,East Asia & Pacific (all income levels),East Asia & Pacific,Koror,134.479,7.34194,Upper middle income,IBRD
+74,PNG,PG,Papua New Guinea,East Asia & Pacific (all income levels),East Asia & Pacific,Port Moresby,147.194,-9.47357,Lower middle income,Blend
+75,PRK,KP,"Korea, Dem. Rep.",East Asia & Pacific (all income levels),East Asia & Pacific,Pyongyang,125.754,39.0319,Low income,Not classified
+76,PYF,PF,French Polynesia,East Asia & Pacific (all income levels),East Asia & Pacific,Papeete,-149.57,-17.535,High income: nonOECD,Not classified
+77,SGP,SG,Singapore,East Asia & Pacific (all income levels),East Asia & Pacific,Singapore,103.85,1.28941,High income: nonOECD,Not classified
+78,SLB,SB,Solomon Islands,East Asia & Pacific (all income levels),East Asia & Pacific,Honiara,159.949,-9.42676,Lower middle income,IDA
+79,THA,TH,Thailand,East Asia & Pacific (all income levels),East Asia & Pacific,Bangkok,100.521,13.7308,Upper middle income,IBRD
+80,TLS,TL,Timor-Leste,East Asia & Pacific (all income levels),East Asia & Pacific,Dili,125.567,-8.56667,Lower middle income,Blend
+81,TON,TO,Tonga,East Asia & Pacific (all income levels),East Asia & Pacific,Nuku'alofa,-175.216,-21.136,Upper middle income,IDA
+82,TUV,TV,Tuvalu,East Asia & Pacific (all income levels),East Asia & Pacific,Funafuti,179.089567,-8.6314877,Upper middle income,IDA
+83,TWN,TW,"Taiwan, China",East Asia & Pacific (all income levels),East Asia & Pacific,,,,High income: nonOECD,Not classified
+84,VNM,VN,Vietnam,East Asia & Pacific (all income levels),East Asia & Pacific,Hanoi,105.825,21.0069,Lower middle income,Blend
+85,VUT,VU,Vanuatu,East Asia & Pacific (all income levels),East Asia & Pacific,Port-Vila,168.321,-17.7404,Lower middle income,IDA
+86,WSM,WS,Samoa,East Asia & Pacific (all income levels),East Asia & Pacific,Apia,-171.752,-13.8314,Lower middle income,IDA
+87,ALB,AL,Albania,Europe & Central Asia (all income levels),Europe & Central Asia,Tirane,19.8172,41.3317,Upper middle income,IBRD
+88,AND,AD,Andorra,Europe & Central Asia (all income levels),Europe & Central Asia,Andorra la Vella,1.5218,42.5075,High income: nonOECD,Not classified
+89,ARM,AM,Armenia,Europe & Central Asia (all income levels),Europe & Central Asia,Yerevan,44.509,40.1596,Lower middle income,IBRD
+90,AUT,AT,Austria,Europe & Central Asia (all income levels),Europe & Central Asia,Vienna,16.3798,48.2201,High income: OECD,Not classified
+91,AZE,AZ,Azerbaijan,Europe & Central Asia (all income levels),Europe & Central Asia,Baku,49.8932,40.3834,Upper middle income,IBRD
+92,BEL,BE,Belgium,Europe & Central Asia (all income levels),Europe & Central Asia,Brussels,4.36761,50.8371,High income: OECD,Not classified
+93,BGR,BG,Bulgaria,Europe & Central Asia (all income levels),Europe & Central Asia,Sofia,23.3238,42.7105,Upper middle income,IBRD
+94,BIH,BA,Bosnia and Herzegovina,Europe & Central Asia (all income levels),Europe & Central Asia,Sarajevo,18.4214,43.8607,Upper middle income,IBRD
+95,BLR,BY,Belarus,Europe & Central Asia (all income levels),Europe & Central Asia,Minsk,27.5766,53.9678,Upper middle income,IBRD
+96,CHE,CH,Switzerland,Europe & Central Asia (all income levels),Europe & Central Asia,Bern,7.44821,46.948,High income: OECD,Not classified
+97,CHI,JG,Channel Islands,Europe & Central Asia (all income levels),Europe & Central Asia,,,,High income: nonOECD,Not classified
+98,CYP,CY,Cyprus,Europe & Central Asia (all income levels),Europe & Central Asia,Nicosia,33.3736,35.1676,High income: nonOECD,Not classified
+99,CZE,CZ,Czech Republic,Europe & Central Asia (all income levels),Europe & Central Asia,Prague,14.4205,50.0878,High income: OECD,Not classified
+100,DEU,DE,Germany,Europe & Central Asia (all income levels),Europe & Central Asia,Berlin,13.4115,52.5235,High income: OECD,Not classified
+101,DNK,DK,Denmark,Europe & Central Asia (all income levels),Europe & Central Asia,Copenhagen,12.5681,55.6763,High income: OECD,Not classified
+102,ESP,ES,Spain,Europe & Central Asia (all income levels),Europe & Central Asia,Madrid,-3.70327,40.4167,High income: OECD,Not classified
+103,EST,EE,Estonia,Europe & Central Asia (all income levels),Europe & Central Asia,Tallinn,24.7586,59.4392,High income: OECD,Not classified
+104,FIN,FI,Finland,Europe & Central Asia (all income levels),Europe & Central Asia,Helsinki,24.9525,60.1608,High income: OECD,Not classified
+105,FRA,FR,France,Europe & Central Asia (all income levels),Europe & Central Asia,Paris,2.35097,48.8566,High income: OECD,Not classified
+106,FRO,FO,Faeroe Islands,Europe & Central Asia (all income levels),Europe & Central Asia,Torshavn,-6.91181,61.8926,High income: nonOECD,Not classified
+107,GBR,GB,United Kingdom,Europe & Central Asia (all income levels),Europe & Central Asia,London,-0.126236,51.5002,High income: OECD,Not classified
+108,GEO,GE,Georgia,Europe & Central Asia (all income levels),Europe & Central Asia,Tbilisi,44.793,41.71,Lower middle income,IBRD
+109,GRC,GR,Greece,Europe & Central Asia (all income levels),Europe & Central Asia,Athens,23.7166,37.9792,High income: OECD,Not classified
+110,GRL,GL,Greenland,Europe & Central Asia (all income levels),Europe & Central Asia,Nuuk,-51.7214,64.1836,High income: nonOECD,Not classified
+111,HRV,HR,Croatia,Europe & Central Asia (all income levels),Europe & Central Asia,Zagreb,15.9614,45.8069,High income: nonOECD,IBRD
+112,HUN,HU,Hungary,Europe & Central Asia (all income levels),Europe & Central Asia,Budapest,19.0408,47.4984,High income: OECD,Not classified
+113,IMN,IM,Isle of Man,Europe & Central Asia (all income levels),Europe & Central Asia,Douglas,-4.47928,54.1509,High income: nonOECD,Not classified
+114,IRL,IE,Ireland,Europe & Central Asia (all income levels),Europe & Central Asia,Dublin,-6.26749,53.3441,High income: OECD,Not classified
+115,ISL,IS,Iceland,Europe & Central Asia (all income levels),Europe & Central Asia,Reykjavik,-21.8952,64.1353,High income: OECD,Not classified
+116,ITA,IT,Italy,Europe & Central Asia (all income levels),Europe & Central Asia,Rome,12.4823,41.8955,High income: OECD,Not classified
+117,KAZ,KZ,Kazakhstan,Europe & Central Asia (all income levels),Europe & Central Asia,Astana,71.4382,51.1879,Upper middle income,IBRD
+118,KGZ,KG,Kyrgyz Republic,Europe & Central Asia (all income levels),Europe & Central Asia,Bishkek,74.6057,42.8851,Lower middle income,IDA
+119,KSV,XK,Kosovo,Europe & Central Asia (all income levels),Europe & Central Asia,Pristina,20.926,42.565,Lower middle income,IDA
+120,LIE,LI,Liechtenstein,Europe & Central Asia (all income levels),Europe & Central Asia,Vaduz,9.52148,47.1411,High income: nonOECD,Not classified
+121,LTU,LT,Lithuania,Europe & Central Asia (all income levels),Europe & Central Asia,Vilnius,25.2799,54.6896,High income: nonOECD,Not classified
+122,LUX,LU,Luxembourg,Europe & Central Asia (all income levels),Europe & Central Asia,Luxembourg,6.1296,49.61,High income: OECD,Not classified
+123,LVA,LV,Latvia,Europe & Central Asia (all income levels),Europe & Central Asia,Riga,24.1048,56.9465,High income: nonOECD,Not classified
+124,MCO,MC,Monaco,Europe & Central Asia (all income levels),Europe & Central Asia,Monaco,7.41891,43.7325,High income: nonOECD,Not classified
+125,MDA,MD,Moldova,Europe & Central Asia (all income levels),Europe & Central Asia,Chisinau,28.8497,47.0167,Lower middle income,Blend
+126,MKD,MK,"Macedonia, FYR",Europe & Central Asia (all income levels),Europe & Central Asia,Skopje,21.4361,42.0024,Upper middle income,IBRD
+127,MNE,ME,Montenegro,Europe & Central Asia (all income levels),Europe & Central Asia,Podgorica,19.2595,42.4602,Upper middle income,IBRD
+128,NLD,NL,Netherlands,Europe & Central Asia (all income levels),Europe & Central Asia,Amsterdam,4.89095,52.3738,High income: OECD,Not classified
+129,NOR,NO,Norway,Europe & Central Asia (all income levels),Europe & Central Asia,Oslo,10.7387,59.9138,High income: OECD,Not classified
+130,POL,PL,Poland,Europe & Central Asia (all income levels),Europe & Central Asia,Warsaw,21.02,52.26,High income: OECD,IBRD
+131,PRT,PT,Portugal,Europe & Central Asia (all income levels),Europe & Central Asia,Lisbon,-9.13552,38.7072,High income: OECD,Not classified
+132,ROU,RO,Romania,Europe & Central Asia (all income levels),Europe & Central Asia,Bucharest,26.0979,44.4479,Upper middle income,IBRD
+133,RUS,RU,Russian Federation,Europe & Central Asia (all income levels),Europe & Central Asia,Moscow,37.6176,55.7558,High income: nonOECD,IBRD
+134,SMR,SM,San Marino,Europe & Central Asia (all income levels),Europe & Central Asia,San Marino,12.4486,43.9322,High income: nonOECD,Not classified
+135,SRB,RS,Serbia,Europe & Central Asia (all income levels),Europe & Central Asia,Belgrade,20.4656,44.8024,Upper middle income,IBRD
+136,SVK,SK,Slovak Republic,Europe & Central Asia (all income levels),Europe & Central Asia,Bratislava,17.1073,48.1484,High income: OECD,Not classified
+137,SVN,SI,Slovenia,Europe & Central Asia (all income levels),Europe & Central Asia,Ljubljana,14.5044,46.0546,High income: OECD,Not classified
+138,SWE,SE,Sweden,Europe & Central Asia (all income levels),Europe & Central Asia,Stockholm,18.0645,59.3327,High income: OECD,Not classified
+139,TJK,TJ,Tajikistan,Europe & Central Asia (all income levels),Europe & Central Asia,Dushanbe,68.7864,38.5878,Lower middle income,IDA
+140,TKM,TM,Turkmenistan,Europe & Central Asia (all income levels),Europe & Central Asia,Ashgabat,58.3794,37.9509,Upper middle income,IBRD
+141,TUR,TR,Turkey,Europe & Central Asia (all income levels),Europe & Central Asia,Ankara,32.3606,39.7153,Upper middle income,IBRD
+142,UKR,UA,Ukraine,Europe & Central Asia (all income levels),Europe & Central Asia,Kiev,30.5038,50.4536,Lower middle income,IBRD
+143,UZB,UZ,Uzbekistan,Europe & Central Asia (all income levels),Europe & Central Asia,Tashkent,69.269,41.3052,Lower middle income,Blend
+144,ABW,AW,Aruba,Latin America & Caribbean (all income levels),Latin America & Caribbean,Oranjestad,-70.0167,12.5167,High income: nonOECD,Not classified
+145,ARG,AR,Argentina,Latin America & Caribbean (all income levels),Latin America & Caribbean,Buenos Aires,-58.4173,-34.6118,High income: nonOECD,IBRD
+146,ATG,AG,Antigua and Barbuda,Latin America & Caribbean (all income levels),Latin America & Caribbean,Saint John's,-61.8456,17.1175,High income: nonOECD,IBRD
+147,BHS,BS,"Bahamas, The",Latin America & Caribbean (all income levels),Latin America & Caribbean,Nassau,-77.339,25.0661,High income: nonOECD,Not classified
+148,BLZ,BZ,Belize,Latin America & Caribbean (all income levels),Latin America & Caribbean,Belmopan,-88.7713,17.2534,Upper middle income,IBRD
+149,BOL,BO,Bolivia,Latin America & Caribbean (all income levels),Latin America & Caribbean,La Paz,-66.1936,-13.9908,Lower middle income,Blend
+150,BRA,BR,Brazil,Latin America & Caribbean (all income levels),Latin America & Caribbean,Brasilia,-47.9292,-15.7801,Upper middle income,IBRD
+151,BRB,BB,Barbados,Latin America & Caribbean (all income levels),Latin America & Caribbean,Bridgetown,-59.6105,13.0935,High income: nonOECD,Not classified
+152,CHL,CL,Chile,Latin America & Caribbean (all income levels),Latin America & Caribbean,Santiago,-70.6475,-33.475,High income: OECD,IBRD
+153,COL,CO,Colombia,Latin America & Caribbean (all income levels),Latin America & Caribbean,Bogota,-74.082,4.60987,Upper middle income,IBRD
+154,CRI,CR,Costa Rica,Latin America & Caribbean (all income levels),Latin America & Caribbean,San Jose,-84.0089,9.63701,Upper middle income,IBRD
+155,CUB,CU,Cuba,Latin America & Caribbean (all income levels),Latin America & Caribbean,Havana,-82.3667,23.1333,Upper middle income,Not classified
+156,CUW,CW,Curacao,Latin America & Caribbean (all income levels),Latin America & Caribbean,Willemstad,,,High income: nonOECD,Not classified
+157,CYM,KY,Cayman Islands,Latin America & Caribbean (all income levels),Latin America & Caribbean,George Town,-81.3857,19.3022,High income: nonOECD,Not classified
+158,DMA,DM,Dominica,Latin America & Caribbean (all income levels),Latin America & Caribbean,Roseau,-61.39,15.2976,Upper middle income,Blend
+159,DOM,DO,Dominican Republic,Latin America & Caribbean (all income levels),Latin America & Caribbean,Santo Domingo,-69.8908,18.479,Upper middle income,IBRD
+160,ECU,EC,Ecuador,Latin America & Caribbean (all income levels),Latin America & Caribbean,Quito,-78.5243,-0.229498,Upper middle income,IBRD
+161,GRD,GD,Grenada,Latin America & Caribbean (all income levels),Latin America & Caribbean,Saint George's,-61.7449,12.0653,Upper middle income,Blend
+162,GTM,GT,Guatemala,Latin America & Caribbean (all income levels),Latin America & Caribbean,Guatemala City,-90.5328,14.6248,Lower middle income,IBRD
+163,GUY,GY,Guyana,Latin America & Caribbean (all income levels),Latin America & Caribbean,Georgetown,-58.1548,6.80461,Lower middle income,IDA
+164,HND,HN,Honduras,Latin America & Caribbean (all income levels),Latin America & Caribbean,Tegucigalpa,-87.4667,15.1333,Lower middle income,IDA
+165,HTI,HT,Haiti,Latin America & Caribbean (all income levels),Latin America & Caribbean,Port-au-Prince,-72.3288,18.5392,Low income,IDA
+166,JAM,JM,Jamaica,Latin America & Caribbean (all income levels),Latin America & Caribbean,Kingston,-76.792,17.9927,Upper middle income,IBRD
+167,KNA,KN,St. Kitts and Nevis,Latin America & Caribbean (all income levels),Latin America & Caribbean,Basseterre,-62.7309,17.3,High income: nonOECD,Not classified
+168,LCA,LC,St. Lucia,Latin America & Caribbean (all income levels),Latin America & Caribbean,Castries,-60.9832,14,Upper middle income,Blend
+169,MAF,MF,St. Martin (French part),Latin America & Caribbean (all income levels),Latin America & Caribbean,Marigot,,,High income: nonOECD,Not classified
+170,MEX,MX,Mexico,Latin America & Caribbean (all income levels),Latin America & Caribbean,Mexico City,-99.1276,19.427,Upper middle income,IBRD
+171,NIC,NI,Nicaragua,Latin America & Caribbean (all income levels),Latin America & Caribbean,Managua,-86.2734,12.1475,Lower middle income,IDA
+172,PAN,PA,Panama,Latin America & Caribbean (all income levels),Latin America & Caribbean,Panama City,-79.5188,8.99427,Upper middle income,IBRD
+173,PER,PE,Peru,Latin America & Caribbean (all income levels),Latin America & Caribbean,Lima,-77.0465,-12.0931,Upper middle income,IBRD
+174,PRI,PR,Puerto Rico,Latin America & Caribbean (all income levels),Latin America & Caribbean,San Juan,-66,18.23,High income: nonOECD,Not classified
+175,PRY,PY,Paraguay,Latin America & Caribbean (all income levels),Latin America & Caribbean,Asuncion,-57.6362,-25.3005,Upper middle income,IBRD
+176,SLV,SV,El Salvador,Latin America & Caribbean (all income levels),Latin America & Caribbean,San Salvador,-89.2073,13.7034,Lower middle income,IBRD
+177,SUR,SR,Suriname,Latin America & Caribbean (all income levels),Latin America & Caribbean,Paramaribo,-55.1679,5.8232,Upper middle income,IBRD
+178,SXM,SX,Sint Maarten (Dutch part),Latin America & Caribbean (all income levels),Latin America & Caribbean,Philipsburg,,,High income: nonOECD,Not classified
+179,TCA,TC,Turks and Caicos Islands,Latin America & Caribbean (all income levels),Latin America & Caribbean,Grand Turk,-71.141389,21.4602778,High income: nonOECD,Not classified
+180,TTO,TT,Trinidad and Tobago,Latin America & Caribbean (all income levels),Latin America & Caribbean,Port-of-Spain,-61.4789,10.6596,High income: nonOECD,IBRD
+181,URY,UY,Uruguay,Latin America & Caribbean (all income levels),Latin America & Caribbean,Montevideo,-56.0675,-34.8941,High income: nonOECD,IBRD
+182,VCT,VC,St. Vincent and the Grenadines,Latin America & Caribbean (all income levels),Latin America & Caribbean,Kingstown,-61.2653,13.2035,Upper middle income,Blend
+183,VEN,VE,"Venezuela, RB",Latin America & Caribbean (all income levels),Latin America & Caribbean,Caracas,-69.8371,9.08165,High income: nonOECD,IBRD
+184,VIR,VI,Virgin Islands (U.S.),Latin America & Caribbean (all income levels),Latin America & Caribbean,Charlotte Amalie,-64.8963,18.3358,High income: nonOECD,Not classified
+185,ARE,AE,United Arab Emirates,Middle East & North Africa (all income levels),Middle East & North Africa,Abu Dhabi,54.3705,24.4764,High income: nonOECD,Not classified
+186,BHR,BH,Bahrain,Middle East & North Africa (all income levels),Middle East & North Africa,Manama,50.5354,26.1921,High income: nonOECD,Not classified
+187,DJI,DJ,Djibouti,Middle East & North Africa (all income levels),Middle East & North Africa,Djibouti,43.1425,11.5806,Lower middle income,IDA
+188,DZA,DZ,Algeria,Middle East & North Africa (all income levels),Middle East & North Africa,Algiers,3.05097,36.7397,Upper middle income,IBRD
+189,EGY,EG,"Egypt, Arab Rep.",Middle East & North Africa (all income levels),Middle East & North Africa,Cairo,31.2461,30.0982,Lower middle income,IBRD
+190,IRN,IR,"Iran, Islamic Rep.",Middle East & North Africa (all income levels),Middle East & North Africa,Tehran,51.4447,35.6878,Upper middle income,IBRD
+191,IRQ,IQ,Iraq,Middle East & North Africa (all income levels),Middle East & North Africa,Baghdad,44.394,33.3302,Upper middle income,IBRD
+192,ISR,IL,Israel,Middle East & North Africa (all income levels),Middle East & North Africa,,35.2035,31.7717,High income: OECD,Not classified
+193,JOR,JO,Jordan,Middle East & North Africa (all income levels),Middle East & North Africa,Amman,35.9263,31.9497,Upper middle income,IBRD
+194,KWT,KW,Kuwait,Middle East & North Africa (all income levels),Middle East & North Africa,Kuwait City,47.9824,29.3721,High income: nonOECD,Not classified
+195,LBN,LB,Lebanon,Middle East & North Africa (all income levels),Middle East & North Africa,Beirut,35.5134,33.8872,Upper middle income,IBRD
+196,LBY,LY,Libya,Middle East & North Africa (all income levels),Middle East & North Africa,Tripoli,13.1072,32.8578,Upper middle income,IBRD
+197,MAR,MA,Morocco,Middle East & North Africa (all income levels),Middle East & North Africa,Rabat,-6.8704,33.9905,Lower middle income,IBRD
+198,MLT,MT,Malta,Middle East & North Africa (all income levels),Middle East & North Africa,Valletta,14.5189,35.9042,High income: nonOECD,Not classified
+199,OMN,OM,Oman,Middle East & North Africa (all income levels),Middle East & North Africa,Muscat,58.5874,23.6105,High income: nonOECD,Not classified
+200,PSE,PS,West Bank and Gaza,Middle East & North Africa (all income levels),Middle East & North Africa,,,,Lower middle income,Not classified
+201,QAT,QA,Qatar,Middle East & North Africa (all income levels),Middle East & North Africa,Doha,51.5082,25.2948,High income: nonOECD,Not classified
+202,SAU,SA,Saudi Arabia,Middle East & North Africa (all income levels),Middle East & North Africa,Riyadh,46.6977,24.6748,High income: nonOECD,Not classified
+203,SYR,SY,Syrian Arab Republic,Middle East & North Africa (all income levels),Middle East & North Africa,Damascus,36.3119,33.5146,Lower middle income,IBRD
+204,TUN,TN,Tunisia,Middle East & North Africa (all income levels),Middle East & North Africa,Tunis,10.21,36.7899,Upper middle income,IBRD
+205,YEM,YE,"Yemen, Rep.",Middle East & North Africa (all income levels),Middle East & North Africa,Sana'a,44.2075,15.352,Lower middle income,IDA
+206,BMU,BM,Bermuda,North America,North America,Hamilton,-64.706,32.3293,High income: nonOECD,Not classified
+207,CAN,CA,Canada,North America,North America,Ottawa,-75.6919,45.4215,High income: OECD,Not classified
+208,USA,US,United States,North America,North America,Washington D.C.,-77.032,38.8895,High income: OECD,Not classified
+209,AFG,AF,Afghanistan,South Asia,South Asia,Kabul,69.1761,34.5228,Low income,IDA
+210,BGD,BD,Bangladesh,South Asia,South Asia,Dhaka,90.4113,23.7055,Lower middle income,IDA
+211,BTN,BT,Bhutan,South Asia,South Asia,Thimphu,89.6177,27.5768,Lower middle income,IDA
+212,IND,IN,India,South Asia,South Asia,New Delhi,77.225,28.6353,Lower middle income,IBRD
+213,LKA,LK,Sri Lanka,South Asia,South Asia,Colombo,79.8528,6.92148,Lower middle income,Blend
+214,MDV,MV,Maldives,South Asia,South Asia,Male,73.5109,4.1742,Upper middle income,IDA
+215,NPL,NP,Nepal,South Asia,South Asia,Kathmandu,85.3157,27.6939,Low income,IDA
+216,PAK,PK,Pakistan,South Asia,South Asia,Islamabad,72.8,30.5167,Lower middle income,Blend
+217,AGO,AO,Angola,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Luanda,13.242,-8.81155,Upper middle income,IBRD
+218,BDI,BI,Burundi,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Bujumbura,29.3639,-3.3784,Low income,IDA
+219,BEN,BJ,Benin,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Porto-Novo,2.6323,6.4779,Low income,IDA
+220,BFA,BF,Burkina Faso,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Ouagadougou,-1.53395,12.3605,Low income,IDA
+221,BWA,BW,Botswana,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Gaborone,25.9201,-24.6544,Upper middle income,IBRD
+222,CAF,CF,Central African Republic,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Bangui,21.6407,5.63056,Low income,IDA
+223,CIV,CI,Cote d'Ivoire,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Yamoussoukro,-4.0305,5.332,Lower middle income,IDA
+224,CMR,CM,Cameroon,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Yaounde,11.5174,3.8721,Lower middle income,Blend
+225,COD,CD,"Congo, Dem. Rep.",Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Kinshasa,15.3222,-4.325,Low income,IDA
+226,COG,CG,"Congo, Rep.",Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Brazzaville,15.2662,-4.2767,Lower middle income,Blend
+227,COM,KM,Comoros,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Moroni,43.2418,-11.6986,Low income,IDA
+228,CPV,CV,Cabo Verde,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Praia,-23.5087,14.9218,Lower middle income,Blend
+229,ERI,ER,Eritrea,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Asmara,38.9183,15.3315,Low income,IDA
+230,ETH,ET,Ethiopia,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Addis Ababa,38.7468,9.02274,Low income,IDA
+231,GAB,GA,Gabon,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Libreville,9.45162,0.38832,Upper middle income,IBRD
+232,GHA,GH,Ghana,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Accra,-0.20795,5.57045,Lower middle income,IDA
+233,GIN,GN,Guinea,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Conakry,-13.7,9.51667,Low income,IDA
+234,GMB,GM,"Gambia, The",Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Banjul,-16.5885,13.4495,Low income,IDA
+235,GNB,GW,Guinea-Bissau,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Bissau,-15.1804,11.8037,Low income,IDA
+236,GNQ,GQ,Equatorial Guinea,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Malabo,8.7741,3.7523,High income: nonOECD,IBRD
+237,KEN,KE,Kenya,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Nairobi,36.8126,-1.27975,Lower middle income,IDA
+238,LBR,LR,Liberia,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Monrovia,-10.7957,6.30039,Low income,IDA
+239,LSO,LS,Lesotho,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Maseru,27.7167,-29.5208,Lower middle income,IDA
+240,MDG,MG,Madagascar,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Antananarivo,45.7167,-20.4667,Low income,IDA
+241,MLI,ML,Mali,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Bamako,-7.50034,13.5667,Low income,IDA
+242,MOZ,MZ,Mozambique,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Maputo,32.5713,-25.9664,Low income,IDA
+243,MRT,MR,Mauritania,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Nouakchott,-15.9824,18.2367,Lower middle income,IDA
+244,MUS,MU,Mauritius,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Port Louis,57.4977,-20.1605,Upper middle income,IBRD
+245,MWI,MW,Malawi,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Lilongwe,33.7703,-13.9899,Low income,IDA
+246,NAM,NA,Namibia,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Windhoek,17.0931,-22.5648,Upper middle income,IBRD
+247,NER,NE,Niger,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Niamey,2.1073,13.514,Low income,IDA
+248,NGA,NG,Nigeria,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Abuja,7.48906,9.05804,Lower middle income,Blend
+249,RWA,RW,Rwanda,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Kigali,30.0587,-1.95325,Low income,IDA
+250,SDN,SD,Sudan,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Khartoum,32.5363,15.5932,Lower middle income,IDA
+251,SEN,SN,Senegal,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Dakar,-17.4734,14.7247,Lower middle income,IDA
+252,SLE,SL,Sierra Leone,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Freetown,-13.2134,8.4821,Low income,IDA
+253,SOM,SO,Somalia,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Mogadishu,45.3254,2.07515,Low income,IDA
+254,SSD,SS,South Sudan,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Juba,31.6,4.85,Low income,IDA
+255,STP,ST,Sao Tome and Principe,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Sao Tome,6.6071,0.20618,Lower middle income,IDA
+256,SWZ,SZ,Swaziland,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Mbabane,31.4659,-26.5225,Lower middle income,IBRD
+257,SYC,SC,Seychelles,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Victoria,55.4466,-4.6309,High income: nonOECD,IBRD
+258,TCD,TD,Chad,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,N'Djamena,15.0445,12.1048,Low income,IDA
+259,TGO,TG,Togo,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Lome,1.2255,6.1228,Low income,IDA
+260,TZA,TZ,Tanzania,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Dodoma,35.7382,-6.17486,Low income,IDA
+261,UGA,UG,Uganda,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Kampala,32.5729,0.314269,Low income,IDA
+262,ZAF,ZA,South Africa,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Pretoria,28.1871,-25.746,Upper middle income,IBRD
+263,ZMB,ZM,Zambia,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Lusaka,28.2937,-15.3982,Lower middle income,IDA
+264,ZWE,ZW,Zimbabwe,Sub-Saharan Africa (all income levels),Sub-Saharan Africa,Harare,31.0672,-17.8312,Low income,Blend
