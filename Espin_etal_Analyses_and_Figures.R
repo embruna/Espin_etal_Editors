@@ -39,8 +39,9 @@ Cho<-read.csv("./Data/Drayd.Cho.v2.csv", dec=".", header = TRUE, sep = ",", chec
 Espin<-read.csv("./Data/Drayd.Espin.v1.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
 
 #Bind the datasets together
-ALLDATA<-bind_rows(Drayd_Cho_v2,Drayd_Espin_v1)
+ALLDATA<-bind_rows(Cho,Espin, id=NULL)
 
+ALLDATA$editor_id<-as.factor(ALLDATA$editor_id)
 #Add the ISO Code for the country in which editor's are based 
 source("Country.Codes.R")
 ALLDATA<-Country.Codes(ALLDATA)
@@ -524,6 +525,78 @@ ggsave("Fig2.eps", plot = multiplot(CountriesED, RegionFig, IncomeFig, cols=1), 
 ######################################################
 
 
+######################################################
+# Fig 3: Cumlative Editors vs Cumulative Authors
+######################################################
+
+AuthorCountries<-read.csv("./Data/AuthorCountries_1985_2014.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
+AuthorCountries<-AuthorCountries[AuthorCountries$YEAR>=FirstYear & AuthorCountries$YEAR<=LastYear,]
+#if you want to see it looks ok...
+AuthorCountries
+#sum(AuthorCountries$N_Articles)
+
+#add country codes and clean up
+source("Country.Codes.R")
+AuthorCountries<-Country.Codes(AuthorCountries)
+levels(AuthorCountries$geo.code)
+
+
+AuPerCountryPerYr.LONG<-AuthorCountries %>% group_by(YEAR, geo.code) %>% summarize(Total = n_distinct(geo.code))
+# AuPerCountryPerYr.LONG[is.na(AuPerCountryPerYr.LONG)] <- 0
+
+AuCumulative<-AuthorCountries %>% ungroup() %>%  select(-Pcnt_Pubs, COUNTRY) %>% group_by(YEAR,geo.code) %>% summarize(yr_tot=sum(N_Articles))
+# AuCumulativem$YEAR<-as.numeric(AuCumulativem$YEAR)
+AuCumulative<-spread(AuCumulative, geo.code,yr_tot)
+AuCumulative[is.na(AuCumulative)] <- 0
+AuCumulative<-as_tibble(AuCumulative)
+AuCumulativePlot<-specaccum(AuCumulative, "collector")
+
+AuCumulativePlot<-as.data.frame(AuCumulativePlot$richness)
+AuCumulativePlot$richness<-as.vector(AuCumulativePlot$richness)
+names(AuCumulativePlot)[1] <- "CumulativeRichness"
+AuCumulativePlot$YEAR<-seq(1985,2014,1)
+
+EDvAuCumRich<-full_join(AuCumulativePlot, editorAcum, by = "YEAR")
+EDvAuCumRich <- EDvAuCumRich %>% select(YEAR, CumulativeRichness.x, CumulativeRichness.y) #reorder columns
+EDvAuCumRich<-gather(EDvAuCumRich, "CumulativeRichness.x","CumulativeRichness.x", 2:3) 
+EDvAuCumRich[EDvAuCumRich=="CumulativeRichness.x"]<-"Authors"
+EDvAuCumRich[EDvAuCumRich=="CumulativeRichness.y"]<-"Editors"
+names(EDvAuCumRich)[2] <- "Category"
+names(EDvAuCumRich)[3] <- "N"
+rm(AuPerCountryPerYr.LONG,AuthorCountries,AuCumulative,AuCumulativePlot)
+
+
+#plot cumulative and annual richness same plot
+EDvAuCumRichPlot<-ggplot(EDvAuCumRich, aes(x=YEAR, y=N, group = Category, colour = Category)) +
+  geom_line(size=1) +
+  scale_color_manual(values=c("blue", "red"))+
+  geom_text(data = EDvAuCumRich[EDvAuCumRich$YEAR=="2012" & EDvAuCumRich$Category=="Editors",], aes(label = Category), hjust = 1, vjust = -1, size=5) +
+  geom_text(data = EDvAuCumRich[EDvAuCumRich$YEAR=="2012" & EDvAuCumRich$Category=="Authors",], aes(label = Category), hjust = 1, vjust = -1, size=5) +
+  ylab("Cumulative Number of Countries") +
+  xlab("Year")+
+  # ggtitle('Fig 3. Cumulative Geographic Richness from 1985-2014 of the editors for N = 24 environmental biology journals \n            and of the authors publishing in those journals during the same time perior (N = 113,816 articles).
+  #         ')+
+  geom_point(color="black", shape=1)+
+  #scale_y_continuous(breaks = seq(20, 220,20))+
+  scale_y_continuous(limits=c(1,max(EDvAuCumRich$N)+20))+
+  scale_x_continuous(breaks=seq(1985, 2015, 5))
+
+EDvAuCumRichPlot<-EDvAuCumRichPlot+theme_classic()+
+  theme(axis.title.x=element_text(colour="black", size = 14, vjust=0),            #sets x axis title size, style, distance from axis #add , face = "bold" if you want bold
+        axis.title.y=element_text(colour="black", size = 14, vjust=2),            #sets y axis title size, style, distance from axis #add , face = "bold" if you want bold
+        axis.text=element_text(colour="black", size = 12),                              #sets size and style of labels on axes
+        legend.title = element_blank(),   #Removes the Legend title
+        legend.text = element_text(color="black", size=10),  
+        # legend.position = c(0.9,0.8),
+        legend.position = ("none"),
+        legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'),
+        plot.margin =unit(c(1,1.5,1,1), "cm")) #+  #plot margin - top, right, bottom, left
+EDvAuCumRichPlot
+ggsave("Fig3.eps", plot = EDvAuCumRichPlot, device = "eps", scale = 1, width = NA, height = NA, units = c("in", "cm", "mm"), dpi = 300, limitsize = TRUE)
+
+
+
+
 
 
 
@@ -670,7 +743,7 @@ model.sel(m1.MAIN,m2.MAIN,m3.MAIN,m4.MAIN,m5.MAIN)
 
 
 ######################################################
-# Supplement Fig S1: Countries in a Year vs. No of Editors in a Year (all journals pooled) 
+# Supplement Fig A: Countries in a Year vs. No of Editors in a Year (all journals pooled) 
 ######################################################
 
 TotalEdsVGeo<-full_join(EdsPerYr,GEOperYR, by="YEAR")
@@ -694,75 +767,102 @@ plotTOTALedsVgeo<-plotTOTALedsVgeo+theme_classic()+
 plotTOTALedsVgeo
 
 
-
 ######################################################
-# Supplement Fig S2: Cumlative Editors vs Cumulative Authors
+# Supplement Fig B: Zoom on editors per region and income from 2005+
 ######################################################
 
-AuthorCountries<-read.csv("./Data/AuthorCountries_1985_2014.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
-AuthorCountries<-AuthorCountries[AuthorCountries$YEAR>=FirstYear & AuthorCountries$YEAR<=LastYear,]
-#if you want to see it looks ok...
-AuthorCountries
-#sum(AuthorCountries$N_Articles)
+ZOOM=1984
+##############################################################
+# Number / Percentage of Editors from Different Regions (all journals pooled)
+# Used for Fig. Sb
+RegionPlotZoom<-AnalysisData %>% select(YEAR,editor_id,REGION,CATEGORY) %>% group_by(editor_id)
+RegionPlotZoom %>% filter(YEAR>=ZOOM) 
+RegionPlotZoom<-distinct(RegionPlotZoom, editor_id,YEAR, .keep_all = TRUE)
+RegionPlotZoom<-RegionPlotZoom %>% group_by(YEAR,REGION) %>% count(YEAR,REGION)
+RegionPlotZoom<-RegionPlotZoom %>% group_by(YEAR) %>% mutate(yr_tot=sum(n)) %>% mutate(Percent=n/yr_tot*100) 
+RegionPlotZoom<-RegionPlotZoom%>% filter (REGION %in% c("East Asia & Pacific", "Latin America & Caribbean", "Sub-Saharan Africa", "South Asia", "Middle East & North Africa"))
+RegionPlotZoom$REGION<-droplevels(RegionPlotZoom$REGION)
+#RegionPlot %>%  group_by(YEAR) %>% mutate(sum=sum(Percent)) checks that add up to 100%
+##############################################################
 
-#add country codes and clean up
-source("Country.Codes.R")
-AuthorCountries<-Country.Codes(AuthorCountries)
-levels(AuthorCountries$geo.code)
-
-
-AuPerCountryPerYr.LONG<-AuthorCountries %>% group_by(YEAR, geo.code) %>% summarize(Total = n_distinct(geo.code))
-# AuPerCountryPerYr.LONG[is.na(AuPerCountryPerYr.LONG)] <- 0
-
-AuCumulative<-AuthorCountries %>% ungroup() %>%  select(-Pcnt_Pubs, COUNTRY) %>% group_by(YEAR,geo.code) %>% summarize(yr_tot=sum(N_Articles))
-# AuCumulativem$YEAR<-as.numeric(AuCumulativem$YEAR)
-AuCumulative<-spread(AuCumulative, geo.code,yr_tot)
-AuCumulative[is.na(AuCumulative)] <- 0
-AuCumulative<-as_tibble(AuCumulative)
-AuCumulativePlot<-specaccum(AuCumulative, "collector")
-
-AuCumulativePlot<-as.data.frame(AuCumulativePlot$richness)
-AuCumulativePlot$richness<-as.vector(AuCumulativePlot$richness)
-names(AuCumulativePlot)[1] <- "CumulativeRichness"
-AuCumulativePlot$YEAR<-seq(1985,2014,1)
-
-EDvAuCumRich<-full_join(AuCumulativePlot, editorAcum, by = "YEAR")
-EDvAuCumRich <- EDvAuCumRich %>% select(YEAR, CumulativeRichness.x, CumulativeRichness.y) #reorder columns
-EDvAuCumRich<-gather(EDvAuCumRich, "CumulativeRichness.x","CumulativeRichness.x", 2:3) 
-EDvAuCumRich[EDvAuCumRich=="CumulativeRichness.x"]<-"Authors"
-EDvAuCumRich[EDvAuCumRich=="CumulativeRichness.y"]<-"Editors"
-names(EDvAuCumRich)[2] <- "Category"
-names(EDvAuCumRich)[3] <- "N"
-rm(AuPerCountryPerYr.LONG,AuthorCountries,AuCumulative,AuCumulativePlot)
+##############################################################
+# Number / Percentage of Editors from Different Income Levels, all journals pooled 
+# USed for Fig. SB
+IncomePlotZoom<-AnalysisData %>% select(YEAR,editor_id,INCOME_LEVEL,CATEGORY) %>% group_by(editor_id) 
+IncomePlotZoom %>% filter(YEAR>=ZOOM)
+IncomePlotZoom<-distinct(IncomePlotZoom, editor_id,YEAR, .keep_all = TRUE)
+IncomePlotZoom<-IncomePlotZoom %>% group_by(YEAR,INCOME_LEVEL) %>% count(YEAR,INCOME_LEVEL)
+IncomePlotZoom<-IncomePlotZoom %>% group_by(YEAR) %>% mutate(yr_tot=sum(n)) %>% mutate(Percent=n/yr_tot*100) 
+IncomePlotZoom<-IncomePlotZoom %>% filter (INCOME_LEVEL %in% c("High income: nonOECD","Upper middle income","Lower middle income","Low income"))
+IncomePlotZoom$INCOME_LEVEL<-droplevels(IncomePlotZoom$INCOME_LEVEL)
+#IncomePlot %>%  group_by(YEAR) %>% mutate(sum=sum(Percent)) checks that add up to 100%
+##############################################################
 
 
-#plot cumulative and annual richness same plot
-EDvAuCumRichPlot<-ggplot(EDvAuCumRich, aes(x=YEAR, y=N, group = Category, colour = Category)) +
-  geom_line(size=1) +
-  scale_color_manual(values=c("blue", "red"))+
-  geom_text(data = EDvAuCumRich[EDvAuCumRich$YEAR=="2012" & EDvAuCumRich$Category=="Editors",], aes(label = Category), hjust = 1, vjust = -1, size=5) +
-  geom_text(data = EDvAuCumRich[EDvAuCumRich$YEAR=="2012" & EDvAuCumRich$Category=="Authors",], aes(label = Category), hjust = 1, vjust = -1, size=5) +
-  ylab("Number of Countries") +
+RegionFigZoom<-ggplot(data=RegionPlotZoom, aes(x=YEAR, y=Percent, group=REGION, colour=REGION)) +
+  geom_line(size=1)+
+  ylab("Percent") +
   xlab("Year")+
-  ggtitle('Fig S2. Cumulative Geographic Richness from 1985-2014 of the editors for N = 24 environmental biology journals \n            and of the authors publishing in those journals during the same time perior (N = 113,816 articles).
-          ')+
-  geom_point(color="black", shape=1)+
-  #scale_y_continuous(breaks = seq(20, 220,20))+
-  scale_y_continuous(limits=c(1,max(EDvAuCumRich$N)+20))+
-  scale_x_continuous(breaks=seq(1985, 2015, 5))
-
-EDvAuCumRichPlot<-EDvAuCumRichPlot+theme_classic()+
+  ggtitle('Fig. B. Proportion of editors in underrepresented (A) Global Regions and (B) National Income Categories (1985-2014).')+
+  scale_y_continuous(limit = c(0, 20))+
+  annotate("text", x=1986, y=20, label= "A", size = 6) +
+  scale_colour_discrete(drop=TRUE,limits = levels(AnalysisData$REGION))+ #THIS maintains the color scheme order based on the original figure see https://stackoverflow.com/questions/6919025/how-to-assign-colors-to-categorical-variables-in-ggplot2-that-have-stable-mappin
+  scale_x_continuous(breaks=seq(ZOOM, 2015, 5))
+RegionFigZoom<-RegionFigZoom+theme_classic()+
   theme(axis.title.x=element_text(colour="black", size = 14, vjust=0),            #sets x axis title size, style, distance from axis #add , face = "bold" if you want bold
         axis.title.y=element_text(colour="black", size = 14, vjust=2),            #sets y axis title size, style, distance from axis #add , face = "bold" if you want bold
-        axis.text=element_text(colour="black", size = 12),                              #sets size and style of labels on axes
+        axis.text=element_text(colour="black", size = 10),                              #sets size and style of labels on axes
         legend.title = element_blank(),   #Removes the Legend title
-        legend.text = element_text(color="black", size=10),  
+        legend.text = element_text(color="black", size=10), 
         # legend.position = c(0.9,0.8),
-        legend.position = ("none"),
-        legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'),
-        plot.margin =unit(c(1,1.5,1,1), "cm")) #+  #plot margin - top, right, bottom, left
-EDvAuCumRichPlot
-ggsave("FigS2.eps", plot = EDvAuCumRichPlot, device = "eps", scale = 1, width = NA, height = NA, units = c("in", "cm", "mm"), dpi = 300, limitsize = TRUE)
+        legend.position = "right",
+        plot.margin=unit(c(1,1,2,1),"lines"),
+        legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
+#plot.margin =unit(c(0,1,0,1.5), "cm")) #+  #plot margin - top, right, bottom, left
+RegionFigZoom
+
+
+######################################################
+# Fig SB-C: Zoom Prop of the EDITORS in EACH YEAR by COUNTRY INCOME
+######################################################
+
+IncomeFigZoom<-ggplot(data=IncomePlotZoom, aes(x=YEAR, y=Percent, group=INCOME_LEVEL, colour=INCOME_LEVEL)) +
+  geom_line(size=1)+
+  ylab("Percent") +
+  xlab("Year")+
+  # ggtitle('(B) Editor National Income Category')+
+  scale_y_continuous(limit = c(0, 20))+
+  annotate("text", x=1986, y=20, label= "B", size = 6) +
+  scale_colour_discrete(drop=TRUE,limits = levels(AnalysisData$INCOME_LEVEL))+ 
+  # scale_y_continuous(breaks=seq(0, 100, 10))+
+  scale_x_continuous(breaks=seq(ZOOM, 2015, 5))
+IncomeFigZoom<-IncomeFigZoom+theme_classic()+
+  theme(axis.title.x=element_text(colour="black", size = 14, vjust=0),            #sets x axis title size, style, distance from axis #add , face = "bold" if you want bold
+        axis.title.y=element_text(colour="black", size = 14, vjust=2),            #sets y axis title size, style, distance from axis #add , face = "bold" if you want bold
+        axis.text=element_text(colour="black", size = 10), 
+        legend.title = element_blank(),   #Removes the Legend title
+        legend.text = element_text(color="black", size=10), 
+        # legend.position = c(0.9,0.8), 
+        legend.position = "right",
+        plot.margin=unit(c(1,1,2,1),"lines"),
+        legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
+#plot.margin =unit(c(0,1,0,1.5), "cm")) #+  #plot margin - top, right, bottom, left
+IncomeFigZoom
+
+
+
+
+
+######################################################
+# BINDING THESE UP TO MAKE FIGURE 2
+######################################################
+# uses source(muliplot.R) loaded at start of code
+source("multiplot.R")
+FigSB<-multiplot(RegionFigZoom, IncomeFigZoom, cols=1)
+ggsave("FigSB.eps", plot = multiplot(RegionFigZoom, IncomeFigZoom, cols=1), device = "eps", scale = 1, width = NA, height = NA, units = c("in", "cm", "mm"), dpi = 300, limitsize = TRUE)
+
+######################################################
+
 
 
 ######################################################
