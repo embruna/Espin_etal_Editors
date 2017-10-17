@@ -21,22 +21,29 @@ Country.Codes <- function(DATASET) {
   
   # Chnage countries as needed, either because country names have changed or to reflect political organization
   
-  DATASET$COUNTRY[DATASET$COUNTRY == "Scotland"]  <- "UK" #With apologies to Scots everywhere
-  DATASET$COUNTRY[DATASET$COUNTRY == "SCOTLAND"]  <- "UK" #With apologies to Scots everywhere
+  DATASET$COUNTRY[DATASET$COUNTRY == "Scotland"]  <- "UK" 
+  DATASET$COUNTRY[DATASET$COUNTRY == "SCOTLAND"]  <- "UK"  
   DATASET$COUNTRY[DATASET$COUNTRY == "Wales"]  <- "UK"
+  DATASET$COUNTRY[DATASET$COUNTRY == "WALES"]  <- "UK"
+  DATASET$COUNTRY[DATASET$COUNTRY == "ENGLAND"]  <- "UK"
   DATASET$COUNTRY[DATASET$COUNTRY == "England"]  <- "UK"
+  DATASET$COUNTRY[DATASET$COUNTRY == "NORTH IRELAND"]  <- "UK" 
+  DATASET$COUNTRY[DATASET$COUNTRY == "NORTHERN IRELAND"]  <- "UK"  
+  DATASET$COUNTRY[DATASET$COUNTRY == "N. Ireland"]  <- "UK"  
+  DATASET$COUNTRY[DATASET$COUNTRY == "Northern Ireland"]  <- "UK"  
   DATASET$COUNTRY[DATASET$COUNTRY == "German Democratic Republic"]  <- "Germany" #removing old names
   DATASET$COUNTRY[DATASET$COUNTRY == "US"]  <- "USA" #in case any snuck in
   DATASET$COUNTRY[DATASET$COUNTRY == "Yugoslavia"]  <- "Croatia" #Authors from Pretinac
+  
   # DATASET$COUNTRY[DATASET$COUNTRY == "French Guiana"]  <- "France" 
   
   #WOS DATA COME CAPITALIZED, THIS CORRECTS DSOME OF THE ODD ONES
   DATASET$COUNTRY[DATASET$COUNTRY == "BOPHUTHATSWANA"]  <- "South Africa"
   DATASET$COUNTRY[DATASET$COUNTRY == "BYELARUS"]  <- "Belarus"
   DATASET$COUNTRY[DATASET$COUNTRY == "CISKEI"]  <- "South Africa"
-  DATASET$COUNTRY[DATASET$COUNTRY == "ENGLAND"]  <- "UK"
+  DATASET$COUNTRY[DATASET$COUNTRY == "ENGLAND"]  <- "England"
   DATASET$COUNTRY[DATASET$COUNTRY == "YEMEN ARAB REP"]  <- "Yemen"
-  DATASET$COUNTRY[DATASET$COUNTRY == "WALES"]  <- "UK"
+  DATASET$COUNTRY[DATASET$COUNTRY == "WALES"]  <- "Wales"
   
   DATASET$COUNTRY[DATASET$COUNTRY == "TRANSKEI"]  <- "South Africa"
   DATASET$COUNTRY[DATASET$COUNTRY == "NETH ANTILLES"]  <- "Netherland Antilles"
@@ -44,9 +51,11 @@ Country.Codes <- function(DATASET) {
   DATASET$COUNTRY[DATASET$COUNTRY == "FR POLYNESIA"]  <- "French Polynesia"
   DATASET$COUNTRY[DATASET$COUNTRY == "FED REP GER"]  <- "Germany"
   DATASET$COUNTRY[DATASET$COUNTRY == "GER DEM REP"]  <- "Germany"  
-  DATASET$COUNTRY[DATASET$COUNTRY == "GUINEA BISSAU"]  <- "GUINEA-BISSAU"  
-  DATASET$COUNTRY[DATASET$COUNTRY == "PAPUA N GUINEA"]  <- "PNG"  
+  DATASET$COUNTRY[DATASET$COUNTRY == "GUINEA BISSAU"]  <- "GUINEA-BISSAU"
+  DATASET$COUNTRY[DATASET$COUNTRY == "PAPUA N GUINEA"]  <- "Papua New Guinea"  
   DATASET$COUNTRY[DATASET$COUNTRY == "W IND ASSOC ST"]  <- NA
+  DATASET$COUNTRY[DATASET$COUNTRY == "MICRONESIA"]  <- "Federated States of Micronesia"    
+  DATASET$COUNTRY[DATASET$COUNTRY == "CENT AFR REPUBL"]  <- "Central African Republic"    
   
   # West Indies Associated States: collective name for a number of islands in
   # Eastern Caribbean whose status changed from being British colonies to states 
@@ -65,6 +74,13 @@ Country.Codes <- function(DATASET) {
   
   DATASET$geo.code<-countrycode(DATASET$COUNTRY, "country.name", "iso3c", warn = TRUE)
   #By setting "warn=TRUE" it will tell you which ones it couldn't convert. Because of spelling mistakes, etc.
+
+  
+
+
+
+  
+  
   DATASET$geo.code<-as.factor(DATASET$geo.code)
   
   
