@@ -377,35 +377,6 @@ IncomePlot
 #
 ######################################################
 ######################################################
-# 
-# str(AnalysisData)
-# # Convert Journal Codes to Journal Names (for figures and analyses)
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="BITR"] <- "Biotropica"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="PLANTECOL"] <- "Plant Ecology"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="AGRONOMY"] <- "Agronomy Journal"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="AJB"] <- "American J. Botany"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="CONBIO"] <- "Conservation Biology"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="ECOLOGY"] <- "Ecology"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="BIOCON"] <- "Biological Conservation"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="JECOL"] <- "J. of Ecology"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="JTE"] <- "J. Tropical Ecology"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="AMNAT"] <- "American Naturalist"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="JBIOG"] <- "J. Biogeography"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="ECOGRAPHY"] <- "Ecography"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="EVOL"] <- "Evolution"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="FEM"] <- "Forest Ecology & Managment"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="FUNECOL"] <- "Functional Ecology"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="LECO"] <- "Landscape Ecology"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="JZOOL"] <- "J. Zoology"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="JAPE"] <- "J. Applied Ecology"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="JANE"] <- "J. Animal Ecology"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="NEWPHYT"] <- "New Phytologist"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="OECOL"] <- "Oecologia"
-# AnalysisData$JOURNAL[AnalysisData$JOURNAL=="OIKOS"] <- "Oikos"
-# 
-# 
-# 
-
 
 ##############################################################
 # TABLE 1
@@ -444,13 +415,11 @@ EdCat.income
 EdCat.region
 
 
-
 ##############################################################
 # Fig 1A: Total Number of Editors (all journals pooled)  vs. Year
 ##############################################################
 
 plotTOTALEDSvYear<-ggplot(EdsPerYr, aes(x=YEAR, y=TotalEditors)) +
-  #ylab("Number of Editors") +
   xlab("Year")+
   ylab("N")+
   geom_line(size=1, color="blue")+
@@ -461,22 +430,17 @@ plotTOTALEDSvYear<-ggplot(EdsPerYr, aes(x=YEAR, y=TotalEditors)) +
 
 plotTOTALEDSvYear<-plotTOTALEDSvYear+theme_classic()+
   theme( axis.text=element_text(colour="black", size = 10),  
-        # axis.title.y=element_text(colour="black", size = 14, vjust=2),            #sets y axis title size, style, distance from axis #add , face = "bold" if you want bold
-        #axis.title.y=element_blank(),
-        # axis.title.x=element_text(colour="black", size = 14, vjust=0),
         legend.text = element_text(color="black", size=10),  
         legend.position = c(0.9,0.8),
         legend.title = element_blank(),   #Removes the Legend title
+        plot.margin=unit(c(1,5,1,1),"lines"),
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
-        # plot.margin =unit(c(1,1.5,1,1), "cm")) #+  #plot margin - top, right, bottom, left
 plotTOTALEDSvYear
-
 
 
 ##############################################################
 # Fig. 1B: Cumulative Geo Richness
 ##############################################################
-
 # PUT THE NECESSARY DATA IN ONE DATAFRAME 
 jointGEOperYR<-GEOperYR
 jointedAccDF<-editorAcum
@@ -494,26 +458,20 @@ jointRichnessPlot<-ggplot(jointRichness, aes(x=YEAR, y=N, group = Richness, colo
   scale_color_manual(values=c("blue", "red"))+
   geom_text(data = jointRichness[jointRichness$YEAR=="2012" & jointRichness$Richness=="Annual",], aes(label = Richness), hjust = 1.0, vjust = 2.5, size=3.5) +
   geom_text(data = jointRichness[jointRichness$YEAR=="2012" & jointRichness$Richness=="Cumulative",], aes(label = Richness), hjust = 2.0, vjust = 1.35, size=3.5) +
-  #ylab("Number of Countries") +
   xlab("Year")+
   ylab("Richness")+
   ggtitle('(B) Editor Geographic Richness')+
   geom_point(color="black", shape=1)+
-  # scale_y_continuous(breaks=seq(0, 1, 0.1))+
   scale_y_continuous(limits = c(25, 75))+
   scale_x_continuous(breaks=seq(FirstYear, LastYear+1, 5))
 
 jointRichnessPlot<-jointRichnessPlot+theme_classic()+
   theme(axis.text=element_text(colour="black", size = 10),         #sets x axis title size, style, distance from axis #add , face = "bold" if you want bold
-        #axis.title.y=element_text(colour="black", size = 14, vjust=2),            #sets y axis title size, style, distance from axis #add , face = "bold" if you want bold
-        #axis.title.y=element_blank(),
-        # axis.title.x=element_text(colour="black", size = 14, vjust=0),   
+        plot.margin=unit(c(1,5,1,1),"lines"),
         legend.title = element_blank(),   #Removes the Legend title
         legend.text = element_text(color="black", size=10),  
-        # legend.position = c(0.9,0.8),
         legend.position = ("none"),
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
-        # plot.margin =unit(c(1,1.5,1,1), "cm")) #+  #plot margin - top, right, bottom, left
 jointRichnessPlot
 
 ##############################################################
@@ -522,25 +480,21 @@ jointRichnessPlot
 
 plotPOOLEDsimpdiv<-ggplot(IsimpDivTable, aes(x=YEAR, y=InvSimpson)) +
   geom_line(size=1, color="blue") + # Use hollow circles
-  #ylab("Geographic Diversity") +
   xlab("Year")+
   ylab(bquote('D'[2]))+
   ggtitle('(C) Editor Geographic Diversity')+
   geom_point(color="black", shape=1)+
-  # scale_y_continuous(breaks=seq(2, 5.5, 0.5))+
   scale_y_continuous(limits = c(0, 20))+
-  # scale_y_continuous(limits=c(1,max(IsimpDivTable$AnnualRichness)))+
   scale_x_continuous(breaks=seq(FirstYear, LastYear+1, 5))
+
 plotPOOLEDsimpdiv<-plotPOOLEDsimpdiv+theme_classic()+
   theme(axis.title.x=element_text(colour="black", size = 14, vjust=0),            #sets x axis title size, style, distance from axis #add , face = "bold" if you want bold
-        #axis.title.y=element_text(colour="black", size = 14, vjust=2),            #sets y axis title size, style, distance from axis #add , face = "bold" if you want bold
-        #axis.title.y=element_blank(),
-        axis.text=element_text(colour="black", size = 10),                              #sets size and style of labels on axes
+        axis.text=element_text(colour="black", size = 10),
+        plot.margin=unit(c(1,5,1,1),"lines"),
         legend.title = element_blank(),   #Removes the Legend title
         legend.text = element_text(color="black", size=10),  
         legend.position = c(0.9,0.8),
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
-        # plot.margin =unit(c(1,1.5,1,1), "cm")) #+  #plot margin - top, right, bottom, left
 plotPOOLEDsimpdiv
 
 
@@ -552,14 +506,14 @@ source("multiplot.R")
 Fig1<-multiplot(plotTOTALEDSvYear, jointRichnessPlot, plotPOOLEDsimpdiv, cols=1)
 # to save the figure in format for submission
 # for an explanation of why you need to do multiplot INSIDe of ggsave see: http://stackoverflow.com/questions/11721401/r-save-multiplot-to-file
-ggsave("Fig1.eps", plot = multiplot(plotTOTALEDSvYear,jointRichnessPlot, plotPOOLEDsimpdiv, cols=1), device = "eps", scale = 1, width = NA, height = NA, units = c("in", "cm", "mm"), dpi = 300, limitsize = TRUE)
-ggsave("Fig1_size_test.eps", plot = multiplot(plotTOTALEDSvYear,jointRichnessPlot, plotPOOLEDsimpdiv, cols=1), device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 300, limitsize = TRUE)
-ggsave("Fig1_size_test.tiff", plot = multiplot(plotTOTALEDSvYear,jointRichnessPlot, plotPOOLEDsimpdiv, cols=1), device = "tiff", width = 13.2, height = 19, units = "cm", dpi = 500, limitsize = TRUE)
+# ggsave("Fig1.eps", plot = multiplot(plotTOTALEDSvYear,jointRichnessPlot, plotPOOLEDsimpdiv, cols=1), device = "eps", scale = 1, width = NA, height = NA, units = c("in", "cm", "mm"), dpi = 300, limitsize = TRUE)
+ggsave("Fig1.eps", plot = multiplot(plotTOTALEDSvYear,jointRichnessPlot, plotPOOLEDsimpdiv, cols=1), device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 300, limitsize = TRUE)
 
-tiff("Fig1_size_test.tiff", width = 13.2, height = 19, units = 'cm', res = 300, compression = 'lzw')
-multiplot(plotTOTALEDSvYear, jointRichnessPlot, plotPOOLEDsimpdiv, cols=1)
-dev.off()
-
+# ggsave("Fig1.tiff", plot = multiplot(plotTOTALEDSvYear,jointRichnessPlot, plotPOOLEDsimpdiv, cols=1), device = "tiff", width = 13.2, height = 19, units = "cm", dpi = 500, limitsize = TRUE)
+# #or
+# tiff("Fig1.tiff", width = 13.2, height = 19, units = 'cm', res = 300, compression = 'lzw')
+# multiplot(plotTOTALEDSvYear, jointRichnessPlot, plotPOOLEDsimpdiv, cols=1)
+# dev.off()
 
 ##############################################################
 # Fig 2A: bar chart of countries with the most unique editors  
@@ -600,8 +554,6 @@ CountriesED<-CountriesED+theme_classic()+
         legend.title = element_blank(),   #Removes the Legend title
         legend.text = element_text(color="black", size=10),  
         legend.position = c(0.9,0.8),
-        # plot.margin=unit(c(1,1,1,1),"lines"),
-        #aspect.ratio=1,
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
 CountriesED
 
@@ -614,7 +566,6 @@ CountriesED
 # counted only once), and then calculates the proportion of that pool from each Region
 ######################################################
 
-
 RegionFig<-ggplot(data=RegionPlot, aes(x=YEAR, y=Percent, group=REGION, colour=REGION)) +
   geom_line(size=1)+
   geom_point(mapping=aes(shape=REGION), size=2) +
@@ -626,8 +577,8 @@ RegionFig<-ggplot(data=RegionPlot, aes(x=YEAR, y=Percent, group=REGION, colour=R
   scale_y_continuous(limit = c(0, 100))+
   scale_color_brewer(palette="Paired")+
   scale_x_continuous(breaks=seq(FirstYear ,LastYear+1, 5))
-# RegionFig<-RegionFig+scale_fill_discrete(labels=c("North America","Europe &\nCentral Asia","East Asia & Pacific","Latin America & Caribbean","Sub-Saharan Africa","South Asia","Middle East & North Africa"))
-#   
+
+  
 RegionFig<-RegionFig+theme_classic()+
   theme(axis.title.x=element_text(colour="black", size = 14, vjust=0),            #sets x axis title size, style, distance from axis #add , face = "bold" if you want bold
         axis.title.y=element_text(colour="black", size = 14, vjust=2),            #sets y axis title size, style, distance from axis #add , face = "bold" if you want bold
@@ -635,11 +586,8 @@ RegionFig<-RegionFig+theme_classic()+
         legend.title = element_blank(),   #Removes the Legend title
         legend.text = element_text(color="black", size=8, lineheight=2),
         legend.key.height=unit(0.3,"cm"),
-        # legend.position = c(0.5,0.9), 
         legend.position = "right",
-        # plot.margin=unit(c(1,1,1,1),"lines"),
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
-#plot.margin =unit(c(0,1,0,1.5), "cm")) #+  #plot margin - top, right, bottom, left
 RegionFig
 
 
@@ -661,12 +609,8 @@ IncomeFig<-ggplot(data=IncomePlot, aes(x=YEAR, y=Percent, group=INCOME_LEVEL, co
   guides(col = guide_legend(nrow = 5))+
   scale_color_brewer(palette="Paired")+
   scale_y_continuous(limit = c(0, 100))+
-  # scale_y_continuous(breaks=seq(0, 100, 10))+
   scale_x_continuous(breaks=seq(FirstYear, LastYear+1, 5))
-  
-  # # geom_dl(aes(label = INCOME_LEVEL), method = "last.points", cex = 0.8)  #Add to last points
-  # geom_dl(aes(label = INCOME_LEVEL), method = list(dl.trans(x = x + 0.2), "last.points", cex = 0.8))
-    
+
 IncomeFig<-IncomeFig+theme_classic()+
   theme(axis.title.x=element_text(colour="black", size = 14, vjust=0),            #sets x axis title size, style, distance from axis #add , face = "bold" if you want bold
         axis.title.y=element_text(colour="black", size = 14, vjust=2),            #sets y axis title size, style, distance from axis #add , face = "bold" if you want bold
@@ -674,15 +618,9 @@ IncomeFig<-IncomeFig+theme_classic()+
         legend.title = element_blank(),   #Removes the Legend title
         legend.text = element_text(color="black", size=8, lineheight=2),
         legend.key.height=unit(0.3,"cm"),
-        # legend.position = c(0.5,0.5), 
         legend.position = "right",
-        # plot.margin=unit(c(1,1,1,1),"lines"),
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
-
-#plot.margin =unit(c(0,1,0,1.5), "cm")) #+  #plot margin - top, right, bottom, left
 IncomeFig
-
-
 
 ######################################################
 # BINDING THESE UP TO MAKE FIGURE 2
@@ -690,17 +628,12 @@ IncomeFig
 # uses source(muliplot.R) loaded at start of code
 source("multiplot.R")
 Fig2<-multiplot(CountriesED, RegionFig, IncomeFig, cols=1)
-ggsave("Fig2.eps", plot = multiplot(CountriesED, RegionFig, IncomeFig, cols=1), device = "eps", scale = 1, width = NA, height = NA, units = c("in", "cm", "mm"), dpi = 400, limitsize = TRUE)
-ggsave("Fig2_size_test.eps", plot = multiplot(CountriesED, RegionFig, IncomeFig, cols=1), device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 400, limitsize = TRUE)
+ggsave("Fig2.eps", plot = multiplot(CountriesED, RegionFig, IncomeFig, cols=1), device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 400, limitsize = TRUE)
 
-
-tiff("Fig2_size_test.tiff", width = 13.2, height = 19, units = 'cm', res = 400, compression = 'lzw')
-multiplot(CountriesED, RegionFig, IncomeFig, cols=1)
-dev.off()
-
-
+# tiff("Fig2.tiff", width = 13.2, height = 19, units = 'cm', res = 400, compression = 'lzw')
+# multiplot(CountriesED, RegionFig, IncomeFig, cols=1)
+# dev.off()
 ######################################################
-
 
 
 ######################################################
@@ -710,9 +643,7 @@ AuthorCountries<-AuthorGeo_1985_2014[AuthorGeo_1985_2014$YEAR>=FirstYear & Autho
 AuthorCountries$COUNTRY<-as.factor(AuthorCountries$COUNTRY)
 
 AuPerCountryPerYr.LONG<-AuthorCountries %>% group_by(YEAR, geo.code) %>% summarize(Total = n_distinct(geo.code))
-# AuPerCountryPerYr.LONG[is.na(AuPerCountryPerYr.LONG)] <- 0
 AuCumulative<-AuthorCountries %>% ungroup() %>%  select(-Pcnt_Pubs, COUNTRY) %>% group_by(YEAR,geo.code) %>% summarize(yr_tot=sum(N_Articles))
-# AuCumulativem$YEAR<-as.numeric(AuCumulativem$YEAR)
 AuCumulative<-spread(AuCumulative, geo.code,yr_tot)
 AuCumulative[is.na(AuCumulative)] <- 0
 AuCumulative<-as_tibble(AuCumulative)
@@ -730,8 +661,6 @@ EDvAuCumRich[EDvAuCumRich=="CumulativeRichness.x"]<-"Authors"
 EDvAuCumRich[EDvAuCumRich=="CumulativeRichness.y"]<-"Editors"
 names(EDvAuCumRich)[2] <- "Category"
 names(EDvAuCumRich)[3] <- "N"
-# rm(AuPerCountryPerYr.LONG,AuthorCountries,AuCumulative,AuCumulativePlot)
-
 
 #plot cumulative and annual richness same plot
 EDvAuCumRichPlot<-ggplot(EDvAuCumRich, aes(x=YEAR, y=N, group = Category, colour = Category)) +
@@ -741,10 +670,7 @@ EDvAuCumRichPlot<-ggplot(EDvAuCumRich, aes(x=YEAR, y=N, group = Category, colour
   geom_text(data = EDvAuCumRich[EDvAuCumRich$YEAR=="2012" & EDvAuCumRich$Category=="Authors",], aes(label = Category), hjust = 1, vjust = -1, size=5) +
   ylab("Cumulative No. of Countries") +
   xlab("Year")+
-  # ggtitle('Fig 3. Cumulative Geographic Richness from 1985-2014 of the editors for N = 24 environmental biology journals \n            and of the authors publishing in those journals during the same time perior (N = 113,816 articles).
-  #         ')+
   geom_point(color="black", shape=1)+
-  #scale_y_continuous(breaks = seq(20, 220,20))+
   scale_y_continuous(limits=c(1,max(EDvAuCumRich$N)+20))+
   scale_x_continuous(breaks=seq(FirstYear, LastYear+1, 5))
 
@@ -754,19 +680,14 @@ EDvAuCumRichPlot<-EDvAuCumRichPlot+theme_classic()+
         axis.text=element_text(colour="black", size = 12),                              #sets size and style of labels on axes
         legend.title = element_blank(),   #Removes the Legend title
         legend.text = element_text(color="black", size=10),  
-        # legend.position = c(0.9,0.8),
         legend.position = ("none"),
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'),
         plot.margin =unit(c(1,1.5,1,1), "cm")) #+  #plot margin - top, right, bottom, left
 EDvAuCumRichPlot
 
-ggsave("Fig3.eps", plot = EDvAuCumRichPlot, device = "eps", scale = 1, width = NA, height = NA, units = c("in", "cm", "mm"), dpi = 400, limitsize = TRUE)
-ggsave("Fig3_size_test.eps", plot = EDvAuCumRichPlot, device = "eps", scale = 1, width = 13.2, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
-ggsave("Fig3_size_test_tiff", plot = EDvAuCumRichPlot, units="cm", scale = 1, width=13.2, height=13.2, dpi=400, device = "tiff")
+ggsave("Fig3.eps", plot = EDvAuCumRichPlot, device = "eps", scale = 1, width = 13.2, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
+# ggsave("Fig3.tiff", plot = EDvAuCumRichPlot, units="cm", scale = 1, width=13.2, height=13.2, dpi=400, device = "tiff")
 
-tiff("Fig3_size_test.tiff", width = 13.2, height = 13.2, units = 'cm', res = 400, compression = 'lzw')
-EDvAuCumRichPlot
-dev.off()
 ######################################################
 ######################################################
 #
@@ -828,14 +749,11 @@ write.csv(TABLE1, file="TableS1.csv", row.names = F) #export it as a csv file
 
 ######################################################
 #chi-sq test: are there differences in frequency by region and income level?
-
 Chi.region<-AnalysisData %>% group_by(REGION)  %>%  summarize(Editors=n_distinct(editor_id)) %>% mutate(Pcnt=Editors/sum(Editors)*100)  
 chisq.test(Chi.region$Editors)
 
 Chi.income<-AnalysisData %>% group_by(INCOME_LEVEL)  %>%  summarize(Editors=n_distinct(editor_id))%>% mutate(Pcnt=Editors/sum(Editors)*100)
 chisq.test(Chi.income$Editors)
-
-
 
 ######################################################
 ######################################################
@@ -880,11 +798,9 @@ mAC5.2 <- gls(Countries ~ Editors*YEAR, data = GLS.data, correlation = corARMA(p
 summary(mAC1.2)
 model.sel(mAC1.1,mAC1.2,mAC2.1,mAC2.2,mAC3.1,mAC3.2,mAC4.1,mAC4.2,mAC5.1,mAC5.2)
 
-
 # ML to test main effects
 # Countries
 # InvSimpson
-
 m1.MAIN <- gls(InvSimpson ~ 1, data = GLS.data, correlation = corARMA(p = 1),na.action = na.omit,method = "ML")
 m2.MAIN <- gls(InvSimpson ~ YEAR, data = GLS.data, correlation = corARMA(p = 1), na.action = na.omit,method = "ML")
 m3.MAIN <- gls(InvSimpson ~ Editors,  data = GLS.data,correlation = corARMA(p = 1),na.action = na.omit,method = "ML")
@@ -906,22 +822,17 @@ anova(m4.MAIN,m5.MAIN)
 # library(MuMIn)
 model.sel(m1.MAIN,m2.MAIN,m3.MAIN,m4.MAIN,m5.MAIN)
 
-
-
 ######################################################
 # S1 Text Fig 1: Countries in a Year vs. No of Editors in a Year (all journals pooled) 
 ######################################################
-
 TotalEdsVGeo<-full_join(EdsPerYr,GEOperYR, by="YEAR")
 plotTOTALedsVgeo<-ggplot(TotalEdsVGeo, aes(x=TotalEditors, y=AnnualRichness)) +
-  # ggtitle('(D) Geographic Richness')+
   ylab("Editor Geographic Richness") +
   xlab("Total No. of Editors")+
-  # geom_line(size=1, color="blue")+
   geom_point(color="black", shape=1)+
   geom_smooth(method='lm', se=FALSE)+
   scale_y_continuous(limit = c(30, 55))
-  # scale_y_continuous(breaks=seq(30, 60, 5))
+
 plotTOTALedsVgeo<-plotTOTALedsVgeo+theme_classic()+
   theme(axis.title.x=element_text(colour="black", size = 14, vjust=0),            #sets x axis title size, style, distance from axis #add , face = "bold" if you want bold
         axis.title.y=element_text(colour="black", size = 14, vjust=2),            #sets y axis title size, style, distance from axis #add , face = "bold" if you want bold
@@ -930,17 +841,14 @@ plotTOTALedsVgeo<-plotTOTALedsVgeo+theme_classic()+
         legend.text = element_text(color="black", size=12),  
         legend.position = c(0.9,0.8),
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
-#plot.margin =unit(c(0,1,0,1.5), "cm")) #+  #plot margin - top, right, bottom, left
 plotTOTALedsVgeo
 
 # to save the figure in format for submission
-ggsave("S1_Text_FigA.eps", plot = plotTOTALedsVgeo, device = "eps", scale = 1, width = 5, height = 5, units = "in", dpi = 300, limitsize = TRUE)
-
-ggsave("S1_Text_FigA_size_test.eps", plot = plotTOTALedsVgeo, device = "eps", scale = 1, width = 13.2, height = 13.2, units = "cm", dpi = 600, limitsize = TRUE)
-
-tiff("S1_Text_FigA_size_test.tiff", width = 13.2, height = 13.2, units = 'cm', res = 400, compression = 'lzw')
-plotTOTALedsVgeo
-dev.off()
+ggsave("S1_Text_FigA.eps", plot = plotTOTALedsVgeo, device = "eps", scale = 1, width = 13.2, height = 13.2, units = "cm", dpi = 600, limitsize = TRUE)
+# 
+# tiff("S1_Text_FigA.tiff", width = 13.2, height = 13.2, units = 'cm', res = 400, compression = 'lzw')
+# plotTOTALedsVgeo
+# dev.off()
 
 ######################################################
 # S1 Text Fig B: Zoom on editors per region and income <25%
@@ -956,11 +864,6 @@ IncomePlotZoom %>% filter(YEAR>=ZOOM)
 IncomePlotZoom<-distinct(IncomePlotZoom, editor_id,YEAR, .keep_all = TRUE)
 IncomePlotZoom<-IncomePlotZoom %>% group_by(YEAR,INCOME_LEVEL) %>% count(YEAR,INCOME_LEVEL)
 IncomePlotZoom<-IncomePlotZoom %>% group_by(YEAR) %>% mutate(yr_tot=sum(n)) %>% mutate(Percent=n/yr_tot*100) 
-# IncomePlotZoom<-IncomePlotZoom %>% filter (INCOME_LEVEL %in% c("High income: nonOECD","Upper middle income","Lower middle income","Low income"))
-# IncomePlotZoom<-droplevels(IncomePlotZoom)
-# levels(IncomePlotZoom$INCOME_LEVEL)
-# summary(IncomePlotZoom)
-#IncomePlot %>%  group_by(YEAR) %>% mutate(sum=sum(Percent)) checks that add up to 100%
 
 #PLOT: INCOME
 IncomeFigZoom<-ggplot(data=IncomePlotZoom, aes(x=YEAR, y=Percent, group=INCOME_LEVEL, colour=INCOME_LEVEL)) +
@@ -972,10 +875,8 @@ IncomeFigZoom<-ggplot(data=IncomePlotZoom, aes(x=YEAR, y=Percent, group=INCOME_L
   ggtitle('(B) Editors by Gross National Income Category')+
   scale_color_brewer(palette="Paired")+
   scale_y_continuous(limit = c(0, 15))+
-  # annotate("text", x=1986, y=20, label= "B", size = 6) +
-  # scale_colour_discrete(drop=TRUE,limits = levels(IncomePlotZoom$INCOME_LEVEL))+
-  # scale_y_continuous(breaks=seq(0, 100, 10))+
   scale_x_continuous(breaks=seq(ZOOM, LastYear+1, 5))
+
 IncomeFigZoom<-IncomeFigZoom+theme_classic()+
   theme(axis.title.x=element_text(colour="black", size = 14, vjust=0),            #sets x axis title size, style, distance from axis #add , face = "bold" if you want bold
         axis.title.y=element_text(colour="black", size = 14, vjust=2),            #sets y axis title size, style, distance from axis #add , face = "bold" if you want bold
@@ -983,26 +884,20 @@ IncomeFigZoom<-IncomeFigZoom+theme_classic()+
         legend.title = element_blank(),   #Removes the Legend title
         legend.text = element_text(color="black", size=10, lineheight=2.5),
         legend.key.height=unit(0.5,"cm"),
-        # legend.position = c(0.9,0.8),
         legend.position = "right",
         plot.margin=unit(c(1,1,2,1),"lines"),
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
-#plot.margin =unit(c(0,1,0,1.5), "cm")) #+  #plot margin - top, right, bottom, left
 IncomeFigZoom
 ##############################################################
 
 ##############################################################
 # Number / Percentage of Editors from Different Regions (all journals pooled)
-# Used for Fig. Sb
 RegionPlotZoom<-AnalysisData %>% select(YEAR,editor_id,REGION,CATEGORY) %>% group_by(editor_id)
 RegionPlotZoom %>% filter(YEAR>=ZOOM) 
 RegionPlotZoom<-distinct(RegionPlotZoom, editor_id,YEAR, .keep_all = TRUE)
 RegionPlotZoom<-RegionPlotZoom %>% group_by(YEAR,REGION) %>% count(YEAR,REGION)
 RegionPlotZoom<-RegionPlotZoom %>% group_by(YEAR) %>% mutate(yr_tot=sum(n)) %>% mutate(Percent=n/yr_tot*100) 
-# RegionPlotZoom<-RegionPlotZoom%>% filter (REGION %in% c("East Asia & Pacific", "Latin America & Caribbean", "Sub-Saharan Africa", "South Asia", "Middle East & North Africa"))
-# RegionPlotZoom<-droplevels(RegionPlotZoom)
 levels(RegionPlotZoom$REGION)
-#RegionPlot %>%  group_by(YEAR) %>% mutate(sum=sum(Percent)) checks that add up to 100%
 
 
 # PLOT: REGION
@@ -1014,10 +909,10 @@ RegionFigZoom<-ggplot(data=RegionPlotZoom, aes(x=YEAR, y=Percent, group=REGION, 
   xlab("Year")+
   ggtitle('(A) Editors by Global Region')+
   scale_y_continuous(limit = c(0, 15))+
-  # annotate("text", x=1986, y=20, label= "(A) Editors by Global Region", size = 6) +
   scale_colour_discrete(drop=TRUE,limits = levels(AnalysisData$REGION))+ #THIS maintains the color scheme order based on the original figure see https://stackoverflow.com/questions/6919025/how-to-assign-colors-to-categorical-variables-in-ggplot2-that-have-stable-mappin
   scale_color_brewer(palette="Paired")+
   scale_x_continuous(breaks=seq(ZOOM, LastYear+1, 5))
+
 RegionFigZoom<-RegionFigZoom+theme_classic()+
   theme(axis.title.x=element_text(colour="black", size = 14, vjust=0),            #sets x axis title size, style, distance from axis #add , face = "bold" if you want bold
         axis.title.y=element_text(colour="black", size = 14, vjust=2),            #sets y axis title size, style, distance from axis #add , face = "bold" if you want bold
@@ -1025,89 +920,67 @@ RegionFigZoom<-RegionFigZoom+theme_classic()+
         legend.title = element_blank(),   #Removes the Legend title
         legend.text = element_text(color="black", size=10, lineheight=2.5),
         legend.key.height=unit(0.5,"cm"),
-        # legend.position = c(0.7,0.8),
         legend.position = "right",
         plot.margin=unit(c(1,1,2,1),"lines"),
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
-#plot.margin =unit(c(0,1,0,1.5), "cm")) #+  #plot margin - top, right, bottom, left
 RegionFigZoom
 ##############################################################
 
 
 ######################################################
-# Binding these up to make Supplement Figure B
+# Binding these up to make S1 Text Figure B
 ######################################################
 source("multiplot.R")
 # if you jiust want to take a quick look at the results...
 FigSC<-multiplot(RegionFigZoom, IncomeFigZoom, cols=1)
 # to save the figure in format for submission
 # for an explanation of why you need to do multiplot INSIDe of ggsave see: http://stackoverflow.com/questions/11721401/r-save-multiplot-to-file
-ggsave("S1_Text_FigB.eps", plot = multiplot(RegionFigZoom, IncomeFigZoom, cols=1), device = "eps", scale = .7, width = NA, height = NA, units = c("in", "cm", "mm"), dpi = 600, limitsize = TRUE)
-# ggsave("S1_Text_FigB_size_test.eps", plot = multiplot(RegionFigZoom, IncomeFigZoom, cols=1), device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 600, limitsize = TRUE)
+ggsave("S1_Text_FigB.eps", plot = multiplot(RegionFigZoom, IncomeFigZoom, cols=1), device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 600, limitsize = TRUE)
 # 
 # tiff("S1_Text_FigB_size_test.tiff", width = 13.2, height = 19, units = 'cm', res = 600, compression = 'lzw')
 # multiplot(RegionFigZoom, IncomeFigZoom, cols=1)
 # dev.off()
 
-
 ######################################################
 # Fig S1: Countries: Changes in Percentage of editors over time
 ######################################################
 
-rm(CountryCurves,foo,all.geo)
 all.geo<-as_tibble(as.factor(levels(AnalysisData$geo.code)))
 all.geo<-factor(levels(AnalysisData$geo.code))
 all.geo<-as_tibble(rep(all.geo, each =30))
 colnames(all.geo)[1]<-"geo.code"
 all.geo$YEAR<-rep(seq(1985,2014,by=1), times =71)
 all.geo$COUNTRY<-all.geo$geo.code
-# all.geo$zero<-NA
 source("AddIncomeRegion.R")
 all.geo<-AddIncomeRegion(all.geo)
 
 CountryCurves<-AnalysisData %>% group_by(YEAR, geo.code, REGION, INCOME_LEVEL) %>% summarize(n = n_distinct(editor_id))
 str(CountryCurves)
 CountryCurves<-full_join(CountryCurves,all.geo, by=c("YEAR","geo.code", "INCOME_LEVEL","REGION"))
-# CountryCurves$n[is.na(CountryCurves$n)] <- 0
 CountryCurves<-full_join(CountryCurves,EdsPerYr, by="YEAR")
-# CountryCurves<-CountryCurves %>% mutate(Percent=n/TotalEditors*100)
-# CountryCurves$Percent<-round(CountryCurves$Percent, digits=2)
 Percent1985<-CountryCurves %>% ungroup(CountryCurves) %>%  filter(YEAR==1985) %>% mutate(Percent1985=n/TotalEditors*100) %>% select(Percent1985,geo.code)
 Percent1985$Percent1985<-round(Percent1985$Percent1985, digits=2)
-# Percent1985<-Percent1985 %>% select(-YEAR)
+
 sum(Percent1985$Percent1985)
 Percent2014<-CountryCurves %>% ungroup(CountryCurves) %>%  filter(YEAR==2014) %>% mutate(Percent2014=n/TotalEditors*100) %>% select(Percent2014,geo.code)
 Percent2014$Percent2014<-round(Percent2014$Percent2014, digits=2)
 
-# Percent2014<-CountryCurves %>% select(YEAR, Percent,geo.code) %>% filter(YEAR==2014) %>% group_by(geo.code) %>% mutate(Percent2014=sum(Percent)) %>% select(-Percent)
-# Percent2014<-Percent2014 %>% select(-YEAR)
-
 CountryCurves<-full_join(Percent1985,Percent2014,by="geo.code")
-CountryCurves<-na.omit(CountryCurves)# CountryCurves$INCOME_LEVEL<-as.factor(CountryCurves$INCOME_LEVEL)
-# CountryCurves$REGION<-as.factor(CountryCurves$REGION)
+CountryCurves<-na.omit(CountryCurves)
 
-# CountryCurves<-full_join(CountryCurves,Percent2014, by="geo.code")
 CountryCurves<-as.data.frame(CountryCurves)
 str(CountryCurves)
 CountryCurves<-CountryCurves%>% mutate(PercentChange85_14=(Percent2014-Percent1985))
-# foo<-CountryCurves %>% filter(YEAR==FirstYear | YEAR==LastYear+1) 
-# foo<-foo %>% filter(geo.code!="GBR" & geo.code!="USA")
-# foo<-foo %>% filter(REGION=="North America" | REGION=="Europe & Central Asia"| REGION=="East Asia & Pacific")
-sum(CountryCurves$Percent1985)
-sum(CountryCurves$Percent2014)
+# sum(CountryCurves$Percent1985)
+# sum(CountryCurves$Percent2014)
 
-# baseline<-CountryCurves %>% select(geo.code,Percent) %>% filter(YEAR==1985)
-# CountryCurves<-full_join(CountryCurves,baseline, by="geo.code")
-# CountryCurves$diff.percent<-CountryCurves$Percent.x-CountryCurves$Percent.y
 levels(CountryCurves$geo.code)
-# CountryCurves2<-CountryCurves %>% filter(REGION== "East Asia & Pacific")
 plotdata<-CountryCurves %>% filter(PercentChange85_14 <= -1 | PercentChange85_14 >=1)   %>% arrange(PercentChange85_14)
-# This is needed to put them in order in the plot with OTHER at the end of the graph
 
 order2<-seq(1:nrow(plotdata))
 plotdata$geo.code <- factor(plotdata$geo.code,plotdata$geo.code[levels = order2])
 rm(order2)
-# levels(plotdata$geo.code)
+
 values = c("GBR" = "darkred","NOR" = "darkred", "CAN" = "navyblue", "USA" = "navyblue","CHN" = "navyblue","NLD" = "navyblue","FRA" = "navyblue","AUS" = "navyblue")
 values = c("GBR" = "darkred","NOR" = "darkred", "CAN" = "darkred", "USA" = "darkred","CHN" = "navyblue","NLD" = "darkred","FRA" = "darkred","AUS" = "navyblue")
 
@@ -1127,7 +1000,6 @@ PercChangePlot<-PercChangePlot+theme_classic()+
         legend.text = element_text(color="black", size=10),  
         legend.position = c(0.9,0.8),
         plot.margin=unit(c(1,1,2,1),"lines"),
-        #aspect.ratio=1,
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
 PercChangePlot
 
@@ -1137,11 +1009,10 @@ ggsave("S1_Fig.eps", plot =PercChangePlot , device = "eps", scale = 1, width = 1
 # tiff("S1_Fig_size_test.tiff", width = 13.2, height = 19, units = 'cm', res = 400, compression = 'lzw')
 # PercChangePlot
 # dev.off()
-
+rm(CountryCurves,foo,all.geo)
 ######################################################
 # S2 Fig: 2014 Authors v. Editors
 ######################################################
-
 
 ##############################################################
 ##############################################################
@@ -1197,18 +1068,18 @@ editors_sub <-semi_join(editors,authors_sub,by="geo.code")
 ae_sub<-rbind(editors_sub,authors_sub)
 ae_sub<-ae_sub %>% arrange(CATEGORY)
 
-foo<-authors %>% group_by(INCOME_LEVEL) %>% summarise(sum(N))
-foo2<-editors %>% group_by(INCOME_LEVEL) %>% summarise(sum(N))
+au_inc_temp<-authors %>% group_by(INCOME_LEVEL) %>% summarise(sum(N))
+ed_inc_temp<-editors %>% group_by(INCOME_LEVEL) %>% summarise(sum(N))
 
-foo3<-authors %>% group_by(REGION) %>% summarise(sum(N))
-foo4<-editors %>% group_by(REGION) %>% summarise(sum(N))
+au_reg_temp<-authors %>% group_by(REGION) %>% summarise(sum(N))
+ed_reg_temp<-editors %>% group_by(REGION) %>% summarise(sum(N))
 
 ae_sub$order<-1:nrow(ae_sub)
 
 # Add the geographic region and national income category in whihc editors are based
 sum(AUbutnotEd$N)
 
-foo<-AUbutnotEd %>% group_by(INCOME_LEVEL) %>% summarise(sum(N)/105*100)
+au_inc_temp<-AUbutnotEd %>% group_by(INCOME_LEVEL) %>% summarise(sum(N)/105*100)
 
 CountriesED<-ae_sub %>% ggplot(aes(x=reorder(geo.code,order), y=Pcnt, fill=CATEGORY)) +
   geom_bar(colour="black", stat="identity",position="dodge")+
@@ -1216,7 +1087,6 @@ CountriesED<-ae_sub %>% ggplot(aes(x=reorder(geo.code,order), y=Pcnt, fill=CATEG
   scale_fill_manual(values=c("darkblue", "darkred"))+
   ylab("Percent") +
   xlab("Country")+
-  # ggtitle('Editors and Authors by Country (2014)')+
   scale_y_continuous(breaks=seq(0, 55, 5))
 CountriesED<-CountriesED+theme_classic()+
   theme(axis.title.x=element_text(colour="black", size = 20, vjust=0),            #sets x axis title size, style, distance from axis #add , face = "bold" if you want bold
@@ -1225,22 +1095,14 @@ CountriesED<-CountriesED+theme_classic()+
         legend.title = element_blank(),   #Removes the Legend title
         legend.text = element_text(color="black", size=18),  
         legend.position = c(0.85,0.5),
-        #legend.position = "right",
         plot.margin=unit(c(1,1,1,1),"lines"),
-        #aspect.ratio=1,
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
 CountriesED
-ggsave("S2_Fig_new.eps", plot = CountriesED, scale = 1, width = 18.05, height = 12,dpi = 400, limitsize = TRUE)
-# ggsave("S2_Fig_new_size_test.eps", plot = CountriesED, scale = 1, width = 7, height = 4,units = "in",dpi = 1000, limitsize = TRUE)
+ggsave("S2_Fig.eps", plot = CountriesED, scale = 1, width = 18.05, height = 12,dpi = 400, limitsize = TRUE)
 # tiff("S2_Fig_new_size_test.tiff", width = 18.05, height = 12, units = 'cm', res = 400, compression = 'lzw')
 # CountriesED
 # dev.off()
 
-
-
-
-# setEPS()
-# postscript("S3_Fig.eps",width=19, height=22)
 ######################################################
 # S3 Fig: Geo Richness of EDITORS EACH YEAR BY JOURNAL 
 ######################################################
@@ -1254,10 +1116,8 @@ JrnlData<-full_join(EdsJrnlYr,CountriesJrnlYr, by=c("JOURNAL", "YEAR"))
 rm(EdsJrnlYr,CountriesJrnlYr)
 JrnlData<-JrnlData %>% select(JOURNAL, YEAR,TotalCountries)
 
-
 JrnlRichnessFig<-ggplot(data=JrnlData, aes(x=YEAR, y=TotalCountries)) +
   geom_line(size=1, color="blue")+
-  #ggtitle('Appendix A: Geographic Richness of environmental biology journals')+
   facet_wrap(~JOURNAL, nrow=4, scales="fixed")+
   ylab("Geographic Richness") +
   xlab("Year")+
@@ -1273,21 +1133,15 @@ JrnlRichnessFig<-JrnlRichnessFig+theme_bw()+
         strip.background = element_blank(),
         panel.spacing.x = unit(0.75, "lines"),
         panel.spacing.y = unit(0.1, "lines"),
-        # strip.background = element_rect(colour="black", fill="white"),
         panel.border = element_rect(colour = "black"),
-        # legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'),
         legend.position="none",
         strip.text = element_text(face = "italic", size = 6))
 JrnlRichnessFig
-#plot.margin =unit(c(0,1,0,1.5), "cm")) #+  #plot margin - top, right, bottom, left
-# uses source(muliplot.R) loaded at start of code
+
 ggsave("S3_Fig.eps", JrnlRichnessFig, device = "eps", scale = 1, width = 19, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
-# ggsave("S3_Fig_size_test.eps", JrnlRichnessFig, device = "eps", scale = 1, width = 19, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
 # tiff("S3_Fig_size_test.tiff",width = 19, height = 13.2, units = 'cm', res = 400, compression = 'lzw')
 # JrnlRichnessFig
 # dev.off()
-
-
 
 ######################################################
 # S4 Fig: Geo Diversity of EDITORS EACH YEAR split by JOURNAL
@@ -1306,7 +1160,7 @@ JrnlIsimpDivTable$YEAR <-DivDataJrnl$YEAR #Add year as a column
 JrnlIsimpDivTable$JOURNAL <-DivDataJrnl$JOURNAL #Add year as a column
 JrnlIsimpDivTable<-rename(JrnlIsimpDivTable, InvSimpson=IsimpsonJRNL) #rename the columns
 JrnlIsimpDivTable <- JrnlIsimpDivTable[c("JOURNAL","YEAR","InvSimpson")] #reorder the columns
-# ShannonDivTable<-arrange(ShannonDivTable, YEAR, desc(ShannonDiv)) # sort in descending order
+
 JrnlIsimpDivTable
 
 #computing evenness
@@ -1316,12 +1170,9 @@ JrnlIsimpDivTable<-mutate(JrnlIsimpDivTable, Geo.Evenness = InvSimpson/Countries
 
 rm(GEOperYRJRNL, IsimpsonJRNL,DivDataJrnl,EdsPerCountryPerJrnlPerYr.LONG)
 
-
 JrnlDiversityFig<-ggplot(data=JrnlIsimpDivTable, aes(x=YEAR, y=InvSimpson)) +
   geom_line(size=1, color="blue")+
   facet_wrap(~JOURNAL, nrow=4, scales="fixed")+
-  # ylab("Geographic Diversity") +
-  # ggtitle('Appendix B: Geographic Diversity of environmental biology journals')+
   ylab(bquote('Geographic Diversity (D'[2]*')'))+
   xlab("Year")+
   scale_color_brewer(palette="Dark2")+
@@ -1336,9 +1187,7 @@ JrnlDiversityFig<-JrnlDiversityFig+theme_bw()+
         strip.background = element_blank(),
         panel.spacing.x = unit(0.75, "lines"),
         panel.spacing.y = unit(0.1, "lines"),
-        # strip.background = element_rect(colour="black", fill="white"),
         panel.border = element_rect(colour = "black"),
-        # legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'),
         legend.position="top",
         legend.text = element_text(color="black", size=8), 
         legend.title = element_blank(),   #Removes the Legend title
@@ -1348,39 +1197,15 @@ JrnlDiversityFig
 # dev.off()
 
 ggsave("S4_Fig.eps", JrnlDiversityFig, device = "eps", scale = 1, width = 19, height = 13.2, units ="cm", dpi = 400, limitsize = TRUE)
-# ggsave("S4_Fig_size_test.eps", JrnlDiversityFig, device = "eps", scale = 1, width = 19, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
-# 
 # tiff("S4_Fig_size_test.tiff", width = 19, height = 13.2, units = 'cm', res = 400, compression = 'lzw')
 # JrnlDiversityFig
 # dev.off()
 # 
-# 
-# source("multiplot.R")
-# # AppA<-multiplot(JrnlRichnessFig,JrnlDiversityFig,JrnlEvennessFig, cols=1)
-# AppA<-multiplot(JrnlRichnessFig,JrnlDiversityFig, cols=1)
-# 
-# # ggsave("AppAggsave.eps", plot = multiplot(JrnlRichnessFig,JrnlDiversityFig,JrnlEvennessFig, cols=1), scale = 1, width=15,height=30,dpi = 300, limitsize = TRUE)
-# ggsave("AppAggsave.eps", plot = multiplot(JrnlRichnessFig,JrnlDiversityFig, cols=1), scale = 1, width=19,height=22,dpi = 400, limitsize = TRUE)
-# dev.off()
-# 
-# tiff("AppA_size_test.tiff", width = 19, height = 22, units = 'cm', res = 400, compression = 'lzw')
-# multiplot(JrnlRichnessFig,JrnlDiversityFig, cols=1)
-# dev.off()
-# 
-# 
-# pdf(file="AppendixA.pdf")
-# JrnlRichnessFig
-# JrnlDiversityFig
-# # JrnlEvennessFig
-# dev.off()
-
 
 ######################################################
 # S5 Fig: Prop of EDITORS EACH YEAR FROM EACH REGION  plit by JOURNAL
 ######################################################
-# pdf(file="AppB.pdf", width=14, height=10)
-# setEPS()
-# postscript("S5_fig.eps",width=14, height=20)
+
 RegionyrJRNL<-AnalysisData %>% group_by(JOURNAL, YEAR, REGION) %>% summarize(Total = n_distinct(editor_id))
 RegionyrJRNL[is.na(RegionyrJRNL)] <- 0
 RegionyrJRNL2<-RegionyrJRNL %>% group_by(JOURNAL, YEAR)  %>%  summarise(Editors=sum(Total))
@@ -1392,8 +1217,6 @@ RegionyrJRNLFig<-ggplot(data=RegionyrJRNL, aes(x=YEAR, y=pcnt, color=REGION)) +
   scale_color_brewer(palette="Dark2")+
   scale_x_continuous(breaks=seq(FirstYear, LastYear+1, 10))+
   facet_wrap(~JOURNAL, nrow=4, scales="fixed")+
-  # facet_wrap(~JOURNAL, nrow=6, scales="free")+ #USE THIS ONE IF YOU USE NUMBERS INSTEAD OF % DUE TO UNEQUAL ED BOARD SIZES
-  # ggtitle('Appendix C: Distribution of Editors by global region'+
   ylab("Percent") +
   xlab("Year")
   
@@ -1406,7 +1229,6 @@ RegionyrJRNLFig<-RegionyrJRNLFig+theme_bw()+
         strip.background = element_blank(),
         panel.spacing.x = unit(0.5, "lines"),
         panel.spacing.y = unit(0.1, "lines"),
-        # strip.background = element_rect(colour="black", fill="white"),
         panel.border = element_rect(colour = "black"),
         legend.position="top",
         legend.text = element_text(color="black", size=8,lineheight=1), 
@@ -1419,17 +1241,9 @@ RegionyrJRNLFig<-RegionyrJRNLFig+theme_bw()+
 RegionyrJRNLFig
 
 ggsave("S5_Fig.eps", RegionyrJRNLFig, device = "eps", scale = 1, width = 19, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
-# ggsave("S5_Fig_size_test.eps", RegionyrJRNLFig, device = "eps", scale = 1, width = 19, height = 13.2,units = "cm", dpi = 400, limitsize = TRUE)
-# 
-# 
 # tiff("S5_Fig_size_test.tiff",width = 19, height = 13.2,units = 'cm', res = 400, compression = 'lzw')
 # RegionyrJRNLFig
 # dev.off()
-
-
-#plot.margin =unit(c(0,1,0,1.5), "cm")) #+  #plot margin - top, right, bottom, left
-
-
 
 ######################################################
 # S6 Fig: Geo Prop of EDITORS EACH YEAR FROM EACH INCOME CATEGORY  plit by JOURNAL
@@ -1446,8 +1260,6 @@ INCOMErJRNLFig<-ggplot(data=INCOMEyrJRNL, aes(x=YEAR, y=pcnt, color=INCOME_LEVEL
   scale_color_brewer(palette="Dark2")+
   scale_x_continuous(breaks=seq(FirstYear, LastYear+1, 10))+
   facet_wrap(~JOURNAL, nrow=4, scales="fixed")+
-  # facet_wrap(~JOURNAL, nrow=6, scales="free")+ #USE THIS ONE IF YOU USE NUMBERS INSTEAD OF % DUE TO UNEQUAL ED BOARD SIZES
-  # ggtitle('Appendix D: Distribution of Editors by national income category')+
   ylab("Percent") +
   xlab("Year")
   
@@ -1460,9 +1272,7 @@ INCOMErJRNLFig<-INCOMErJRNLFig+theme_bw()+
         strip.background = element_blank(),
         panel.spacing.x = unit(0.75, "lines"),
         panel.spacing.y = unit(0.1, "lines"),
-        # strip.background = element_rect(colour="black", fill="white"),
         panel.border = element_rect(colour = "black"),
-        # legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'),
         legend.position="top",
         legend.text = element_text(color="black", size=8), 
         legend.title = element_blank(),   #Removes the Legend title
@@ -1472,29 +1282,6 @@ INCOMErJRNLFig
 
 
 ggsave("S6_Fig.eps", INCOMErJRNLFig, device = "eps", scale = 1, width = 19, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
-# ggsave("S6_Fig_size_test.eps", INCOMErJRNLFig, device = "eps", scale = 1, width = 19, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
-# # 
-# # 
 # tiff("S6_Fig_size_test.tiff", width = 19, height = 13.2,units = 'cm', res = 400, compression = 'lzw')
 # INCOMErJRNLFig
 # dev.off()
-# 
-# source("multiplot.R")
-# AppB<-multiplot(RegionyrJRNLFig,INCOMErJRNLFig, cols=1)
-# ggsave("AppBggsave.eps", plot = multiplot(RegionyrJRNLFig,INCOMErJRNLFig, cols=1), scale = 1, width=15,height=30,dpi = 300, limitsize = TRUE)
-# dev.off()
-# 
-# 
-# tiff("AppB_size_test.tiff", width = 19, height = 22, units = 'cm', res = 400, compression = 'lzw')
-# multiplot(RegionyrJRNLFig,INCOMErJRNLFig, cols=1)
-# dev.off()
-# 
-
-
-# tiff(file="AppA.tif", width=9, height=20)
-# AppA<-multiplot(JrnlRichnessFig,JrnlDiversityFig, JrnlEvennessFig, cols=1)
-# dev.off()
-
-
-
-#plot.margin =unit(c(0,1,0,1.5), "cm")) #+  #plot margin - top, right, bottom, left
