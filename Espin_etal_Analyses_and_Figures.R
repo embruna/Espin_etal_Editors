@@ -63,21 +63,21 @@ rm(list=ls())
 ##############################################################
 ##############################################################
 
-# Data on Editors from Cho et al. 2014 and Espin et al. 2017 
+# Data on Editors from Cho et al. 2014
 Cho<-read.csv("./Data/Drayd.Cho.v2.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
-#minor correction to Cho
+#minor corrections to Cho
 Cho$COUNTRY<-as.character(Cho$COUNTRY)
-
 Cho$COUNTRY[Cho$COUNTRY=="UK"] <- "United Kingdom"
 Cho$COUNTRY[Cho$COUNTRY=="USSR"] <- "Russia"
 Cho$COUNTRY[Cho$COUNTRY=="ITALY"] <- "Italy"
 Cho$COUNTRY[Cho$COUNTRY=="United States"] <- "USA"
 Cho$COUNTRY[Cho$COUNTRY=="Usa"] <- "USA"
 Cho$COUNTRY[Cho$COUNTRY=="UsA"] <- "USA"
-
+# Convert Country back to factor
 Cho$COUNTRY<-as.factor(Cho$COUNTRY)
 droplevels(Cho$COUNTRY)
 
+# Data on Editors from Espin et al. 2017 
 Espin<-read.csv("./Data/Drayd.Espin.v1.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
 #Corrections to Espin
 Espin$COUNTRY<-as.character(Espin$COUNTRY)
@@ -100,26 +100,19 @@ Espin$COUNTRY<-as.factor(Espin$COUNTRY)
 droplevels(Espin$COUNTRY)
 
 
-
-
-
 #Bind the datasets together
 ALLDATA<-bind_rows(Cho,Espin, id=NULL)
 
-#Add the ISO Code for the country in which editor's are based 
+#Add the ISO Code for the country in which editors are based 
 source("Country.Codes.R")
 ALLDATA<-Country.Codes(ALLDATA)
 levels(ALLDATA$geo.code)
 levels(as.factor(ALLDATA$COUNTRY))
-
-
-# Add the geographic region and national income category in whihc editors are based
+# Add the geographic region & national income category in which editors are based
 source("AddIncomeRegion.R")
 ALLDATA<-AddIncomeRegion(ALLDATA)
 
-
-
-# Espin et al considered French Guiana = HIGH INCOME OECD income category and region = LATIN AMERICA/CARRIBBEAN 
+## Espin et al considered French Guiana = HIGH INCOME OECD income category and region = LATIN AMERICA/CARRIBBEAN 
 # This is because scientists there have access to greater financial resources because they are 
 # part of France. (NB: Puerto Rico is treated the same way but that is already done in function AddIncomeRegion)
 ALLDATA$REGION[ALLDATA$geo.code == "GUF"]  <- "Latin America & Caribbean"
@@ -134,28 +127,20 @@ ALLDATA$INCOME_LEVEL[ALLDATA$geo.code == "GUF"]  <- "High income: OECD"
 ##############################################################
 
 AuthorGeo_1985_2014<-read.csv("./Data/AuthorCountries_1985_2014.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE, row.names = 1)
-#if you want to see it looks ok...
-AuthorGeo_1985_2014
+# if you want to see it looks ok use the following line:
+# AuthorGeo_1985_2014
 
 AuthorGeo_1985_2014$COUNTRY[AuthorGeo_1985_2014$COUNTRY=="FED REP GER"] <- "GERMANY"
 
-
 levels(as.factor(AuthorGeo_1985_2014$COUNTRY))
-#sum(AuthorCountries$N_Articles)
 
-#add country codes and clean up
+#add country codes 
 source("Country.Codes.R")
 AuthorGeo_1985_2014<-Country.Codes(AuthorGeo_1985_2014)
 levels(AuthorGeo_1985_2014$geo.code)
-
 #add author region & income 
 source("AddIncomeRegion.R")
 AuthorGeo_1985_2014<-AddIncomeRegion(AuthorGeo_1985_2014)
-
-
-
-
-
 
 # These don't have world bank information in the data file, so we added it ourselves.  
 AuthorGeo_1985_2014$REGION[AuthorGeo_1985_2014$geo.code == "COK"]  <- "East Asia & Pacific" # COOK ISLANDS
@@ -180,7 +165,6 @@ AuthorGeo_1985_2014$REGION[AuthorGeo_1985_2014$geo.code == "ANT"]  <- "Latin Ame
 AuthorGeo_1985_2014$INCOME_LEVEL[AuthorGeo_1985_2014$geo.code == "ANT"]  <- "High income: OECD"# Netherland Antilles
 
 
-
 ##############################################################
 ##############################################################
 #
@@ -190,7 +174,7 @@ AuthorGeo_1985_2014$INCOME_LEVEL[AuthorGeo_1985_2014$geo.code == "ANT"]  <- "Hig
 ##############################################################
 
 # DEFINE THE TEMPORAL RANGE OF THE ANALYSES 
-# Espin et al. Plos Biology analyzed editoral board composition 1985-2015
+# Espin et al. Plos Biology analyzed editoral board composition 1985-2014
 FirstYear=1985
 LastYear=2014
 
@@ -205,25 +189,19 @@ AnalysisData <- AnalysisData[AnalysisData$CATEGORY %in% c('EIC', 'AE', 'SE', 'SP
 
 # delete unused columns 
 AnalysisData<-AnalysisData %>% select(-NOTES,-GENDER, -VOLUME, -ISSUE, -TITLE)
-
 # Convert editor_ID to type: factor
 AnalysisData$editor_id<-as.factor(AnalysisData$editor_id)
-
 # Convert COUNTRY to type: factor
 AnalysisData$COUNTRY<-as.factor(AnalysisData$COUNTRY)
-
 # Convert YEAR to type: numeric
 AnalysisData$YEAR<-as.numeric(AnalysisData$YEAR)
-
-
-
-
-
 # Change the names of the levels of the factors to abbreviations to make the figures cleaner 
-str(AnalysisData)
+# str(AnalysisData)
 levels(AnalysisData$JOURNAL)
 AnalysisData$JOURNAL<-as.factor(AnalysisData$JOURNAL)
 
+# Use the following section to change the abbreviations for journals 
+# into the names you want displayed in figures
 AnalysisData$JOURNAL <-recode(AnalysisData$JOURNAL,'BITR'="Biotropica", 
                               'PLANTECOL'="Plant Ecology",
                               'OIKOS'="Oikos", 
@@ -249,6 +227,7 @@ AnalysisData$JOURNAL <-recode(AnalysisData$JOURNAL,'BITR'="Biotropica",
                               'AGRONOMY'="Agronomy Journal",
                               'JTE'="J Tropical Ecology")
 
+# Use the following section to change the regions into how you want them displayed in figures
 AnalysisData$REGION <-recode(AnalysisData$REGION,'North America'="N Amer", 
                              'Europe & Central Asia'="Eur & C Asia", 
                              'East Asia & Pacific'="E Asia & Pac",
@@ -257,13 +236,13 @@ AnalysisData$REGION <-recode(AnalysisData$REGION,'North America'="N Amer",
                              'South Asia'="S Asia",
                              'Middle East & North Africa'="M East & N Afr")
 
+# Use the following section to change the income levels into how you want them displayed in figures
 AnalysisData$INCOME_LEVEL <-recode(AnalysisData$INCOME_LEVEL,'High income: OECD'="High OECD", 
                                  'High income: nonOECD'="High nonOECD", 
                                  'Upper middle income'="Upper Middle",
                                  'Lower middle income'="Lower Middle",
                                  'Low income'="Low")
 
-levels(AnalysisData$INCOME_LEVEL)
 #############################################################
 
 
