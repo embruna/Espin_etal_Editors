@@ -256,7 +256,11 @@ eds
 ##############################################################
 
 ##############################################################
-# Total number of countries represented by Editors 
+# Total number of countries represented by Editors
+
+# Analyses and plots are based on geo.code, but it is helpful to examine
+# both countries and the geo.codes to make sure there are no
+# discrepancies and that they add up to the same number. 
 geocodes<-AnalysisData %>% summarise(n_distinct(geo.code))
 geocodes
 levels(AnalysisData$geo.code)
@@ -314,7 +318,6 @@ IsimpDivTable<-rename(IsimpDivTable, InvSimpson=IsimpDivTable) #rename the colum
 IsimpDivTable <- IsimpDivTable[c("YEAR","InvSimpson")] #reorder the columns
 IsimpDivTable<-as_tibble(IsimpDivTable)
 
-
 # THIS CALCLULATES THE SIMPSONS INDEX (expressed as 1-D)
 simpDivTable <- diversity((DivDataPooled %>% select(-YEAR)), index="simpson") #Need to strip away the journal and year columns for vegan to do the analysis
 # Table DIVERSITY with Results and Journals
@@ -324,12 +327,11 @@ simpDivTable<-rename(simpDivTable, Simpson=simpDivTable) #rename the columns
 simpDivTable <- simpDivTable[c("YEAR","Simpson")] #reorder the columns
 simpDivTable<-as_tibble(simpDivTable)
 
-
 IsimpDivTable<-full_join(GEOperYR,IsimpDivTable, by="YEAR")
 IsimpDivTable<-full_join(IsimpDivTable,simpDivTable, by="YEAR")
 
-# 4: Geographic Evenness (all journals pooled). We do not present results for "Evenness" of the Editors
-# but it is straightforward to calculate.
+# 4: Geographic Evenness (all journals pooled). We do not present results 
+# for "Evenness" of the Editors but it is straightforward to calculate.
 IsimpDivTable<-mutate(IsimpDivTable, Geo.Evenness = InvSimpson/AnnualRichness)
 IsimpDivTable
 ##############################################################
