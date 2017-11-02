@@ -21,20 +21,19 @@ Country.Codes <- function(DATASET) {
   
   # Chnage countries as needed, either because country names have changed or to reflect political organization
   
-  DATASET$COUNTRY[DATASET$COUNTRY == "Scotland"]  <- "UK" 
-  DATASET$COUNTRY[DATASET$COUNTRY == "SCOTLAND"]  <- "UK"  
-  DATASET$COUNTRY[DATASET$COUNTRY == "Wales"]  <- "UK"
-  DATASET$COUNTRY[DATASET$COUNTRY == "WALES"]  <- "UK"
-  DATASET$COUNTRY[DATASET$COUNTRY == "ENGLAND"]  <- "UK"
-  DATASET$COUNTRY[DATASET$COUNTRY == "England"]  <- "UK"
-  DATASET$COUNTRY[DATASET$COUNTRY == "NORTH IRELAND"]  <- "UK" 
-  DATASET$COUNTRY[DATASET$COUNTRY == "NORTHERN IRELAND"]  <- "UK"  
-  DATASET$COUNTRY[DATASET$COUNTRY == "N. Ireland"]  <- "UK"  
-  DATASET$COUNTRY[DATASET$COUNTRY == "Northern Ireland"]  <- "UK"  
+  DATASET$COUNTRY[DATASET$COUNTRY == "Scotland"]  <- "United Kingdom" 
+  DATASET$COUNTRY[DATASET$COUNTRY == "SCOTLAND"]  <- "United Kingdom"  
+  DATASET$COUNTRY[DATASET$COUNTRY == "Wales"]  <- "United Kingdom"
+  DATASET$COUNTRY[DATASET$COUNTRY == "WALES"]  <- "United Kingdom"
+  DATASET$COUNTRY[DATASET$COUNTRY == "ENGLAND"]  <- "United Kingdom"
+  DATASET$COUNTRY[DATASET$COUNTRY == "England"]  <- "United Kingdom"
+  DATASET$COUNTRY[DATASET$COUNTRY == "NORTH IRELAND"]  <- "United Kingdom" 
+  DATASET$COUNTRY[DATASET$COUNTRY == "NORTHERN IRELAND"]  <- "United Kingdom"  
+  DATASET$COUNTRY[DATASET$COUNTRY == "N. Ireland"]  <- "United Kingdom"  
+  DATASET$COUNTRY[DATASET$COUNTRY == "Northern Ireland"]  <- "United Kingdom"  
   DATASET$COUNTRY[DATASET$COUNTRY == "German Democratic Republic"]  <- "Germany" #removing old names
   DATASET$COUNTRY[DATASET$COUNTRY == "US"]  <- "USA" #in case any snuck in
   DATASET$COUNTRY[DATASET$COUNTRY == "Yugoslavia"]  <- "Croatia" #Authors from Pretinac
-  
   # DATASET$COUNTRY[DATASET$COUNTRY == "French Guiana"]  <- "France" 
   
   #WOS DATA COME CAPITALIZED, THIS CORRECTS DSOME OF THE ODD ONES
@@ -44,13 +43,12 @@ Country.Codes <- function(DATASET) {
   DATASET$COUNTRY[DATASET$COUNTRY == "ENGLAND"]  <- "England"
   DATASET$COUNTRY[DATASET$COUNTRY == "YEMEN ARAB REP"]  <- "Yemen"
   DATASET$COUNTRY[DATASET$COUNTRY == "WALES"]  <- "Wales"
-  
   DATASET$COUNTRY[DATASET$COUNTRY == "TRANSKEI"]  <- "South Africa"
   DATASET$COUNTRY[DATASET$COUNTRY == "NETH ANTILLES"]  <- "Netherland Antilles"
   DATASET$COUNTRY[DATASET$COUNTRY == "MONGOL PEO REP"]  <- "Mongolia"
   DATASET$COUNTRY[DATASET$COUNTRY == "FR POLYNESIA"]  <- "French Polynesia"
   DATASET$COUNTRY[DATASET$COUNTRY == "FED REP GER"]  <- "Germany"
-  DATASET$COUNTRY[DATASET$COUNTRY == "GER DEM REP"]  <- "Germany"  
+  DATASET$COUNTRY[DATASET$COUNTRY == "GER DEM REP"]  <- "Germany"
   DATASET$COUNTRY[DATASET$COUNTRY == "GUINEA BISSAU"]  <- "GUINEA-BISSAU"
   DATASET$COUNTRY[DATASET$COUNTRY == "PAPUA N GUINEA"]  <- "Papua New Guinea"  
   DATASET$COUNTRY[DATASET$COUNTRY == "W IND ASSOC ST"]  <- NA
@@ -75,20 +73,13 @@ Country.Codes <- function(DATASET) {
   DATASET$geo.code<-countrycode(DATASET$COUNTRY, "country.name", "iso3c", warn = TRUE)
   #By setting "warn=TRUE" it will tell you which ones it couldn't convert. Because of spelling mistakes, etc.
 
-  
-
-
-
-  
-  
   DATASET$geo.code<-as.factor(DATASET$geo.code)
-  
-  
+
   #Deleting rows without country
   # DATASET <- DATASET[!is.na(DATASET$geo.code),] 
   
-  #You can correct these as follows in the dataframe with all the data, then add a new column to the dataframe with the country codes
-  
+  # You can correct these as follows in the dataframe with all the data, then add a 
+  # new column to the dataframe with the country codes
   
   return(DATASET)
   
