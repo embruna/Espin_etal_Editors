@@ -10,9 +10,13 @@
 # environmental biology and natural resource management. Dryad Digital Repository. https://doi.org/10.5061/dryad.6jn86.2
 # from the article Cho et al. (2014) Women are underrepresented on the editorial boards of journals in environmental 
 # biology and natural resource management. PeerJ 2: e542. https://doi.org/10.7717/peerj.542
+
 # and 
-# 2) Espin et al. (2017) Data from: 
-# from the article: Espin et al. (2017)
+
+# 2) Espin et al. (2017) Data from: A persistent lack of international representation on 
+# editorial boards in environmental biology. Dryad Digital Repository.
+# from the article:  Espin et al. (2017) A persistent lack of international representation on 
+# editorial boards in environmental biology. PLOS Biology.
 
 # If you use these datasets in publications please cite both the data packages and the original articles.
 # If using this code please cite the Zenodo DOI...  
@@ -99,9 +103,26 @@ Espin$COUNTRY[Espin$COUNTRY=="USSR"] <- "Russia"
 Espin$COUNTRY<-as.factor(Espin$COUNTRY)
 droplevels(Espin$COUNTRY)
 
+# Corrections Caught by 2017 SciWri Class
+Cho$COUNTRY[Cho$LAST_NAME=="Pedreira" & Cho$FIRST_NAME=="Carlos"] <- "Brazil"
+Cho$COUNTRY[Cho$LAST_NAME=="Benbi" & Cho$FIRST_NAME=="Dinesh"] <- "India"
+Cho$COUNTRY[Cho$LAST_NAME=="Borras" & Cho$FIRST_NAME=="Lucas"] <- "Argentina"
+Cho$COUNTRY[Cho$LAST_NAME=="Esker" & Cho$FIRST_NAME=="Paul"] <- "Costa Rica"
+Cho$COUNTRY[Cho$LAST_NAME=="Buresh" & Cho$FIRST_NAME=="Roland"] <- "USA"
 
+
+Espin$COUNTRY[Espin$LAST_NAME=="Miguez" & Espin$FIRST_NAME=="Fernando"] <- "USA"
+Espin$FIRST_NAME[Espin$LAST_NAME=="Vlek" & Espin$YEAR=="1986"] <- "P"
+Espin$COUNTRY[Espin$LAST_NAME=="Vlek" & Espin$JOURNAL=="AGRONOMY"] <- "Germany"
+Espin$editor_id[Espin$LAST_NAME=="Vlek" & Espin$JOURNAL=="AGRONOMY"] <- 2947
+Espin$COUNTRY[Espin$LAST_NAME=="Korner" & Espin$JOURNAL=="FUNECOL" & Espin$YEAR>1989] <- "Switzerland"
+Espin<-add_row(Espin,JOURNAL="FUNECOL", YEAR=2005, VOLUME=19, ISSUE=1, TITLE="Associate.Editor", NAME="Gary R Bortolotti",FIRST_NAME="Gary", MIDDLE_NAME="R", LAST_NAME="Bortolotti", COUNTRY="Canada", CATEGORY="SE", editor_id=1153, geo.code="CAN", INCOME_LEVEL="High income: OECD", REGION="North America")
+Espin<-add_row(Espin,JOURNAL="FUNECOL", YEAR=2012, VOLUME=26, ISSUE=1, TITLE="Associate.Editor", FIRST_NAME="Barbara", LAST_NAME="Tschirren", NAME="Barbara Tschirren",COUNTRY="Switzerland", CATEGORY="SE",editor_id=369, geo.code="CHE", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
 #Bind the datasets together
 ALLDATA<-bind_rows(Cho,Espin, id=NULL)
+str(ALLDATA)
+
+
 
 #Add the ISO Code for the country in which editors are based 
 source("Country.Codes.R")
