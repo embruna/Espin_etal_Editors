@@ -20,7 +20,7 @@ Country.Codes <- function(DATASET) {
   DATASET<-subset(DATASET, COUNTRY!="Unknown")
   
   # Chnage countries as needed, either because country names have changed or to reflect political organization
-  
+
   DATASET$COUNTRY[DATASET$COUNTRY == "Scotland"]  <- "United Kingdom" 
   DATASET$COUNTRY[DATASET$COUNTRY == "SCOTLAND"]  <- "United Kingdom"  
   DATASET$COUNTRY[DATASET$COUNTRY == "Wales"]  <- "United Kingdom"
