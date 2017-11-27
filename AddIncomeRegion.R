@@ -1,6 +1,7 @@
 AddIncomeRegion <- function(DATASET) {
   
-  # IMPORT WORLD BANK INDICATORS (downloaded 2/Dec/2015)
+  # IMPORT World Bank Data on country Income and Region
+  # Espin et al used the version of the data downloaded 2/Dec/2015 from https://data.worldbank.org/data-catalog/world-development-indicators
   WDI_data<-read.csv("./Data/WDI_data.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
   row.names(WDI_data) <- WDI_data$iso3c     #Assigning row names in table for later search
   
@@ -20,14 +21,13 @@ AddIncomeRegion <- function(DATASET) {
   
   DATASET$INCOME_LEVEL <-  factor(x =  DATASET$INCOME_LEVEL, levels = INCOMES.ORDERED.LIST)
   DATASET$REGION <-  factor(x =  DATASET$REGION, levels = REGIONS.ORDERED.LIST)
-
-  DATASET$geo.code[DATASET$COUNTRY == "NORTH IRELAND"]  <- "GBR" # Northern Ireland is inadvertendlty being placed in Ireland instead of GBR
-  DATASET$geo.code[DATASET$COUNTRY == "NORTHERN IRELAND"]  <- "GBR" # Northern Ireland is inadvertendlty being placed in Ireland instead of GBR
-  DATASET$geo.code[DATASET$COUNTRY == "NORTH IRELAND"]  <- "GBR" # Northern Ireland is inadvertendlty being placed in Ireland instead of GBR
-  DATASET$geo.code[DATASET$COUNTRY == "N. Ireland"]  <- "GBR" # Northern Ireland is inadvertendlty being placed in Ireland instead of GBR
-  DATASET$geo.code[DATASET$COUNTRY == "Northern Ireland"]  <- "GBR" # Northern Ireland is inadvertendlty being placed in Ireland instead of GBR
   
-  
+  # Northern Ireland is incorrectly coded as IRL instead of GBR
+  DATASET$geo.code[DATASET$COUNTRY == "NORTH IRELAND"]  <- "GBR"    
+  DATASET$geo.code[DATASET$COUNTRY == "NORTHERN IRELAND"]  <- "GBR" 
+  DATASET$geo.code[DATASET$COUNTRY == "NORTH IRELAND"]  <- "GBR"
+  DATASET$geo.code[DATASET$COUNTRY == "N. Ireland"]  <- "GBR" 
+  DATASET$geo.code[DATASET$COUNTRY == "Northern Ireland"]  <- "GBR" 
   
   # rm(WDI_data,REGIONS.ORDERED.LIST,INCOMES.ORDERED.LIST)
   
