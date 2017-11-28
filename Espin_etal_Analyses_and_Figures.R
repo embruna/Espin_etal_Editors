@@ -19,7 +19,7 @@
 # editorial boards in environmental biology. PLOS Biology.
 
 # If you use these datasets in publications please cite both the data packages and the original articles.
-# If using this code please cite the Zenodo DOI...  
+# If using this code please cite the Zenodo archive of v.1 of this code.
 
 
 ##############################################################
@@ -53,9 +53,6 @@ library(grid)
 library(gridExtra)
 library(RColorBrewer)
 
-
-
-
 # Clear the environment 
 rm(list=ls())
 
@@ -68,8 +65,15 @@ rm(list=ls())
 ##############################################################
 
 # Data on Editors from Cho et al. 2014
-Cho<-read.csv("./Data/Drayd.Cho.v2.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
-#minor corrections to Cho
+
+Cho<-read.csv("./Data/Dryad_Cho_V2.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
+# minor corrections to Cho_V2 Caught by Bruna's 2017 SciWri Class
+Cho$COUNTRY[Cho$LAST_NAME=="Pedreira" & Cho$FIRST_NAME=="Carlos"] <- "Brazil"
+Cho$COUNTRY[Cho$LAST_NAME=="Benbi" & Cho$FIRST_NAME=="Dinesh"] <- "India"
+Cho$COUNTRY[Cho$LAST_NAME=="Borras" & Cho$FIRST_NAME=="Lucas"] <- "Argentina"
+Cho$COUNTRY[Cho$LAST_NAME=="Esker" & Cho$FIRST_NAME=="Paul"] <- "Costa Rica"
+Cho$COUNTRY[Cho$LAST_NAME=="Buresh" & Cho$FIRST_NAME=="Roland"] <- "USA"
+
 Cho$COUNTRY<-as.character(Cho$COUNTRY)
 Cho$COUNTRY[Cho$COUNTRY=="UK"] <- "United Kingdom"
 Cho$COUNTRY[Cho$COUNTRY=="USSR"] <- "Russia"
@@ -100,28 +104,94 @@ Espin$COUNTRY[Espin$COUNTRY=="United States"] <- "USA"
 Espin$COUNTRY[Espin$COUNTRY=="Usa"] <- "USA"
 Espin$COUNTRY[Espin$COUNTRY=="UsA"] <- "USA"
 Espin$COUNTRY[Espin$COUNTRY=="USSR"] <- "Russia"
+Espin$COUNTRY[Espin$LAST_NAME=="Bearhop" & Espin$JOURNAL=="JANE"] <- "Northern Ireland"
+Espin$COUNTRY[Espin$LAST_NAME=="Lawton" & Espin$JOURNAL=="JANE"] <- "United Kingdom"
+Espin$COUNTRY[Espin$LAST_NAME=="Miguez" & Espin$FIRST_NAME=="Fernando"] <- "USA"
+Espin$COUNTRY[Espin$LAST_NAME=="Vlek" & Espin$JOURNAL=="AGRONOMY"] <- "Germany"
+Espin$COUNTRY[Espin$LAST_NAME=="Korner" & Espin$JOURNAL=="FUNECOL" & Espin$YEAR>1989] <- "Switzerland"
+
 Espin$COUNTRY<-as.factor(Espin$COUNTRY)
 droplevels(Espin$COUNTRY)
 
-# Corrections Caught by 2017 SciWri Class
-Cho$COUNTRY[Cho$LAST_NAME=="Pedreira" & Cho$FIRST_NAME=="Carlos"] <- "Brazil"
-Cho$COUNTRY[Cho$LAST_NAME=="Benbi" & Cho$FIRST_NAME=="Dinesh"] <- "India"
-Cho$COUNTRY[Cho$LAST_NAME=="Borras" & Cho$FIRST_NAME=="Lucas"] <- "Argentina"
-Cho$COUNTRY[Cho$LAST_NAME=="Esker" & Cho$FIRST_NAME=="Paul"] <- "Costa Rica"
-Cho$COUNTRY[Cho$LAST_NAME=="Buresh" & Cho$FIRST_NAME=="Roland"] <- "USA"
-
-
-Espin$COUNTRY[Espin$LAST_NAME=="Miguez" & Espin$FIRST_NAME=="Fernando"] <- "USA"
-Espin$FIRST_NAME[Espin$LAST_NAME=="Vlek" & Espin$YEAR=="1986"] <- "P"
-Espin$COUNTRY[Espin$LAST_NAME=="Vlek" & Espin$JOURNAL=="AGRONOMY"] <- "Germany"
+Espin$editor_id[Espin$editor_id==1034] <- 1033 #duplicated due to misspelled named: E VanDer and E Van Der Maarel and VanDerMaarel 
+Espin$editor_id[Espin$editor_id==1035] <- 1033 #duplicated due to misspelled named: E VanDer and E Van Der Maarel and VanDerMaarel 
+Espin$editor_id[Espin$LAST_NAME=="Tomkins"] <- 894
 Espin$editor_id[Espin$LAST_NAME=="Vlek" & Espin$JOURNAL=="AGRONOMY"] <- 2947
-Espin$COUNTRY[Espin$LAST_NAME=="Korner" & Espin$JOURNAL=="FUNECOL" & Espin$YEAR>1989] <- "Switzerland"
+
+Espin$geo.code[Espin$LAST_NAME=="Lawton" & Espin$JOURNAL=="JANE"] <- "GBR"
+Espin$geo.code[Espin$LAST_NAME=="Bearhop" & Espin$JOURNAL=="JANE"] <- "GBR"
+
+
+
+Espin$LAST_NAME<-as.character(Espin$LAST_NAME)
+Espin$LAST_NAME[Espin$LAST_NAME=="Tomkins" & Espin$JOURNAL=="JANE"] <- "Tompkins"
+Espin$LAST_NAME<-as.factor(Espin$LAST_NAME)
+Espin$LAST_NAME[Espin$LAST_NAME=="van der Maarel" & Espin$editor_id==1033] <- "VanDerMaarel"
+Espin$LAST_NAME[Espin$LAST_NAME=="VanDer" & Espin$editor_id==1033] <- "VanDerMaarel"
+droplevels(Espin$LAST_NAME)
+
+
+Espin$FIRST_NAME<-as.character(Espin$FIRST_NAME)
+Espin$FIRST_NAME[Espin$LAST_NAME=="Roulin"] <- "Alexandre"
+Espin$FIRST_NAME[Espin$LAST_NAME=="Vlek" & Espin$YEAR=="1986"] <- "P"
+Espin$FIRST_NAME[Espin$LAST_NAME=="Wilson" & Espin$YEAR=="1986"] <- "P"
+Espin$FIRST_NAME<-as.factor(Espin$FIRST_NAME)
+droplevels(Espin$FIRST_NAME)
+
+Espin$NAME<-as.character(Espin$NAME)
+Espin$NAME[Espin$LAST_NAME=="Roulin"] <- "Alexandre Roulin"
+Espin$NAME[Espin$editor_id==1033] <- "E VanDerMaarel"
+Espin$NAME<-as.factor(Espin$NAME)
+droplevels(Espin$NAME)
+
+
+
 Espin<-add_row(Espin,JOURNAL="FUNECOL", YEAR=2005, VOLUME=19, ISSUE=1, TITLE="Associate.Editor", NAME="Gary R Bortolotti",FIRST_NAME="Gary", MIDDLE_NAME="R", LAST_NAME="Bortolotti", COUNTRY="Canada", CATEGORY="SE", editor_id=1153, geo.code="CAN", INCOME_LEVEL="High income: OECD", REGION="North America")
 Espin<-add_row(Espin,JOURNAL="FUNECOL", YEAR=2012, VOLUME=26, ISSUE=1, TITLE="Associate.Editor", FIRST_NAME="Barbara", LAST_NAME="Tschirren", NAME="Barbara Tschirren",COUNTRY="Switzerland", CATEGORY="SE",editor_id=369, geo.code="CHE", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=1995, VOLUME=64, ISSUE=1, TITLE="SE", FIRST_NAME="Peter", LAST_NAME="Jarman", NAME="Peter Jarman",COUNTRY="Australia", CATEGORY="SE",editor_id=2838, geo.code="AUS", INCOME_LEVEL="High income: OECD", REGION="East Asia & Pacific")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2005, VOLUME=74, ISSUE=1, TITLE="AE", FIRST_NAME="Lennart", LAST_NAME="Persson", NAME="Lennart Persson",COUNTRY="Sweden", CATEGORY="SE",editor_id=2221, geo.code="SWE", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=1999, VOLUME=68, ISSUE=1, TITLE="EIC", FIRST_NAME="Dave", LAST_NAME="Raffaelli", NAME="Dave Raffaelli",COUNTRY="UK", CATEGORY="EIC",editor_id=831, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2012, VOLUME=81, ISSUE=1, TITLE="AE", FIRST_NAME="Isabel", LAST_NAME="Smallegange", NAME="Isabel Smallegange",COUNTRY="UK", CATEGORY="SE",editor_id=1419, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2011, VOLUME=80, ISSUE=1, TITLE="AE", FIRST_NAME="Jason", LAST_NAME="Tylianakis", NAME="Jason Tylianakis",COUNTRY="New Zealand", CATEGORY="SE",editor_id=1917, geo.code="NZL", INCOME_LEVEL="High income: OECD", REGION="East Asia & Pacific")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2008, VOLUME=77, ISSUE=1, TITLE="AE", FIRST_NAME="Andrew", LAST_NAME="White", NAME="Andrew White",COUNTRY="UK", CATEGORY="SE",editor_id=229, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2011, VOLUME=80, ISSUE=1, TITLE="AE", FIRST_NAME="Sheena", LAST_NAME="Cotter", NAME="Sheena Cotter",COUNTRY="UK", CATEGORY="SE",editor_id=3306, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2011, VOLUME=80, ISSUE=1, TITLE="AE", FIRST_NAME="John", LAST_NAME="Fryxell", NAME="John Fryxell",COUNTRY="Canada", CATEGORY="SE",editor_id=1585, geo.code="CAN", INCOME_LEVEL="High income: OECD", REGION="North America")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2013, VOLUME=82, ISSUE=1, TITLE="AE", FIRST_NAME="Spence", LAST_NAME="Behmer", NAME="Spence Behmer",COUNTRY="USA", CATEGORY="SE",editor_id=3279, geo.code="USA", INCOME_LEVEL="High income: OECD", REGION="North America")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2013, VOLUME=82, ISSUE=1, TITLE="SE", FIRST_NAME="Luca", LAST_NAME="Borger", NAME="Luca Borger",COUNTRY="France", CATEGORY="SE",editor_id=2129, geo.code="FRA", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+
+
+delete1<-Espin %>% filter(NAME=="Jon Wright" & JOURNAL=="JANE" & YEAR==2013)
+delete2<-Espin %>% filter(NAME=="Chris Thomas" & JOURNAL=="JANE" & YEAR==2013)
+delete3<-Espin %>% filter(NAME=="Kevin McCann" & JOURNAL=="JANE" & YEAR==2012)
+delete4<-Espin %>% filter(NAME=="Peter Bennett" & JOURNAL=="JANE" & YEAR==2013)
+delete5<-Espin %>% filter(NAME=="Andrew Beckerman" & JOURNAL=="JANE" & YEAR==2013)
+delete6<-Espin %>% filter(NAME=="J A Wiens" & JOURNAL=="LECO" & (YEAR==2012 | YEAR==2013))
+delete7<-Espin %>% filter(NAME=="B L Turner" & JOURNAL=="LECO" & (YEAR==2012 | YEAR==2013))
+delete8<-Espin %>% filter(NAME=="M Green Turner" & JOURNAL=="LECO" & (YEAR==2012 | YEAR==2013))
+
+
+delete_Espin<-rbind(delete1,delete2,delete3,delete4,delete5,delete6,delete7,delete8)
+Espin<-setdiff(Espin,delete_Espin)
+rm(delete1,delete2,delete3,delete4,delete5,delete6,delete7,delete8,delete_Espin)
+
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2013, VOLUME=82, ISSUE=1, TITLE="AE", FIRST_NAME="Dylan", LAST_NAME="Childs", NAME="Dylan Childs",COUNTRY="UK", CATEGORY="SE",editor_id=3948, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2014, VOLUME=83, ISSUE=1, TITLE="AE", FIRST_NAME="Dylan", LAST_NAME="Childs", NAME="Dylan Childs",COUNTRY="UK", CATEGORY="SE",editor_id=3948, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2014, VOLUME=83, ISSUE=1, TITLE="AE", FIRST_NAME="Kate", LAST_NAME="Jones", NAME="Kate Jones",COUNTRY="UK", CATEGORY="SE",editor_id=3949, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="LECO", YEAR=2011, VOLUME=26, ISSUE=1, TITLE="Editorial.Board", FIRST_NAME="G", LAST_NAME="Zurlini", NAME="G Zurlini",COUNTRY="Italy", CATEGORY="SE",editor_id=1281, geo.code="ITA", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="LECO", YEAR=1998, VOLUME=13, ISSUE=1, TITLE="Editorial.Board", FIRST_NAME="G", MIDDLE_NAME="P", LAST_NAME="Malanson", NAME="G P Malanson",COUNTRY="Canada", CATEGORY="SE",editor_id=1223, geo.code="CAN", INCOME_LEVEL="High income: OECD", REGION="North America")
+Espin<-add_row(Espin,JOURNAL="LECO", YEAR=2011, VOLUME=16, ISSUE=1, TITLE="Editorial.Board", FIRST_NAME="J", LAST_NAME="Nassauer", NAME="J Nassauer",COUNTRY="USA", CATEGORY="SE",editor_id=1781, geo.code="USA", INCOME_LEVEL="High income: OECD", REGION="North America")
+
+
+
+
+write.csv(Espin, file="./Data/Drayd.Espin.v1_upload.csv", row.names = F) #export it as a csv file
+
+
 #Bind the datasets together
 ALLDATA<-bind_rows(Cho,Espin, id=NULL)
 str(ALLDATA)
-
+rm(Cho,Espin)
 
 
 #Add the ISO Code for the country in which editors are based 
@@ -146,12 +216,12 @@ ALLDATA$INCOME_LEVEL[ALLDATA$geo.code == "GUF"]  <- "High income: OECD"
 #
 ##############################################################
 ##############################################################
-
-AuthorGeo_1985_2014<-read.csv("./Data/AuthorCountries_1985_2014.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE, row.names = 1)
+# The following fiel was generated based on individual WOS searches for each year 1985-2014. For details see the 
+# AuthorGeo1985-2014.R in the Zenodo Archive or Github Repository
+AuthorGeo_1985_2014<-read.csv("./Data/AuthorCountries_1985_2014.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE)
 # if you want to see it looks ok use the following line:
 # AuthorGeo_1985_2014
 
-AuthorGeo_1985_2014$COUNTRY[AuthorGeo_1985_2014$COUNTRY=="FED REP GER"] <- "GERMANY"
 
 levels(as.factor(AuthorGeo_1985_2014$COUNTRY))
 
@@ -350,6 +420,7 @@ simpDivTable<-as_tibble(simpDivTable)
 
 IsimpDivTable<-full_join(GEOperYR,IsimpDivTable, by="YEAR")
 IsimpDivTable<-full_join(IsimpDivTable,simpDivTable, by="YEAR")
+rm(simpDivTable)
 
 # 4: Geographic Evenness (all journals pooled). We do not present results 
 # for "Evenness" of the Editors but it is straightforward to calculate.
@@ -528,9 +599,9 @@ Fig1<-multiplot(plotTOTALEDSvYear, jointRichnessPlot, plotPOOLEDsimpdiv, cols=1)
 # to save the figure in format for submission
 # for an explanation of why you need to do multiplot INSIDe of ggsave see: http://stackoverflow.com/questions/11721401/r-save-multiplot-to-file
 # ggsave("Fig1.eps", plot = multiplot(plotTOTALEDSvYear,jointRichnessPlot, plotPOOLEDsimpdiv, cols=1), device = "eps", scale = 1, width = NA, height = NA, units = c("in", "cm", "mm"), dpi = 300, limitsize = TRUE)
-ggsave("Fig1.eps", plot = multiplot(plotTOTALEDSvYear,jointRichnessPlot, plotPOOLEDsimpdiv, cols=1), device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 300, limitsize = TRUE)
+ggsave("./Output/Fig1.eps", plot = multiplot(plotTOTALEDSvYear,jointRichnessPlot, plotPOOLEDsimpdiv, cols=1), device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 300, limitsize = TRUE)
 
-# ggsave("Fig1.tiff", plot = multiplot(plotTOTALEDSvYear,jointRichnessPlot, plotPOOLEDsimpdiv, cols=1), device = "tiff", width = 13.2, height = 19, units = "cm", dpi = 500, limitsize = TRUE)
+# ggsave("./Output/Fig1.tiff", plot = multiplot(plotTOTALEDSvYear,jointRichnessPlot, plotPOOLEDsimpdiv, cols=1), device = "tiff", width = 13.2, height = 19, units = "cm", dpi = 500, limitsize = TRUE)
 # #or
 # tiff("Fig1.tiff", width = 13.2, height = 19, units = 'cm', res = 300, compression = 'lzw')
 # multiplot(plotTOTALEDSvYear, jointRichnessPlot, plotPOOLEDsimpdiv, cols=1)
@@ -649,9 +720,9 @@ IncomeFig
 # uses source(muliplot.R) loaded at start of code
 source("multiplot.R")
 Fig2<-multiplot(CountriesED, RegionFig, IncomeFig, cols=1)
-ggsave("Fig2.eps", plot = multiplot(CountriesED, RegionFig, IncomeFig, cols=1), device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 400, limitsize = TRUE)
+ggsave("./Output/Fig2.eps", plot = multiplot(CountriesED, RegionFig, IncomeFig, cols=1), device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 400, limitsize = TRUE)
 
-# tiff("Fig2.tiff", width = 13.2, height = 19, units = 'cm', res = 400, compression = 'lzw')
+# tiff("./Output/Fig2.tiff", width = 13.2, height = 19, units = 'cm', res = 400, compression = 'lzw')
 # multiplot(CountriesED, RegionFig, IncomeFig, cols=1)
 # dev.off()
 ######################################################
@@ -706,8 +777,8 @@ EDvAuCumRichPlot<-EDvAuCumRichPlot+theme_classic()+
         plot.margin =unit(c(1,1.5,1,1), "cm")) #+  #plot margin - top, right, bottom, left
 EDvAuCumRichPlot
 
-ggsave("Fig3.eps", plot = EDvAuCumRichPlot, device = "eps", scale = 1, width = 13.2, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
-# ggsave("Fig3.tiff", plot = EDvAuCumRichPlot, units="cm", scale = 1, width=13.2, height=13.2, dpi=400, device = "tiff")
+ggsave("./Output/Fig3.eps", plot = EDvAuCumRichPlot, device = "eps", scale = 1, width = 13.2, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
+# ggsave("./Output/Fig3.tiff", plot = EDvAuCumRichPlot, units="cm", scale = 1, width=13.2, height=13.2, dpi=400, device = "tiff")
 
 ######################################################
 ######################################################
@@ -766,7 +837,7 @@ TABLE1<-mutate(TABLE1, CEratio=TotalEditors/TotalCountries)
 TABLE1$Pcnt<-round(TABLE1$CEratio, digits=2)
 TABLE1
 rm(EdsFirstYr,CountriesFirstYr,EdsLastYr,CountriesLastYr,EdsTotal,CountriesTotal)
-write.csv(TABLE1, file="TableS1.csv", row.names = F) #export it as a csv file
+write.csv(TABLE1, file="./Output/TableS1.csv", row.names = F) #export it as a csv file
 
 ######################################################
 #chi-sq test: are there differences in frequency by region and income level?
@@ -865,17 +936,17 @@ plotTOTALedsVgeo<-plotTOTALedsVgeo+theme_classic()+
 plotTOTALedsVgeo
 
 # to save the figure in format for submission
-ggsave("S1_Text_FigA.eps", plot = plotTOTALedsVgeo, device = "eps", scale = 1, width = 13.2, height = 13.2, units = "cm", dpi = 600, limitsize = TRUE)
+ggsave("./Output/S1_Text_Fig1.eps", plot = plotTOTALedsVgeo, device = "eps", scale = 1, width = 13.2, height = 13.2, units = "cm", dpi = 600, limitsize = TRUE)
 # 
-# tiff("S1_Text_FigA.tiff", width = 13.2, height = 13.2, units = 'cm', res = 400, compression = 'lzw')
+# tiff("./Output/S1_Text_Fig1.tiff", width = 13.2, height = 13.2, units = 'cm', res = 400, compression = 'lzw')
 # plotTOTALedsVgeo
 # dev.off()
 
 ######################################################
-# S1 Text Fig B: Zoom on editors per region and income <25%
+# S1 Text Fig 2: Zoom on editors per region and income <25%
 ######################################################
 
-ZOOM=1984
+ZOOM=1985
 
 ##############################################################
 # Number / Percentage of Editors from Different Income Levels, all journals pooled 
@@ -956,21 +1027,21 @@ source("multiplot.R")
 FigSC<-multiplot(RegionFigZoom, IncomeFigZoom, cols=1)
 # to save the figure in format for submission
 # for an explanation of why you need to do multiplot INSIDe of ggsave see: http://stackoverflow.com/questions/11721401/r-save-multiplot-to-file
-ggsave("S1_Text_FigB.eps", plot = multiplot(RegionFigZoom, IncomeFigZoom, cols=1), device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 600, limitsize = TRUE)
+ggsave("./Output/S1_Text_Fig2.eps", plot = multiplot(RegionFigZoom, IncomeFigZoom, cols=1), device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 600, limitsize = TRUE)
 # 
-# tiff("S1_Text_FigB_size_test.tiff", width = 13.2, height = 19, units = 'cm', res = 600, compression = 'lzw')
+# tiff("./Output/S1_Text_Fig2_size_test.tiff", width = 13.2, height = 19, units = 'cm', res = 600, compression = 'lzw')
 # multiplot(RegionFigZoom, IncomeFigZoom, cols=1)
 # dev.off()
 
 ######################################################
-# Fig S1: Countries: Changes in Percentage of editors over time
+# S1 Text Fig 3: Countries: Changes in Percentage of editors over time
 ######################################################
 
 all.geo<-as_tibble(as.factor(levels(AnalysisData$geo.code)))
 all.geo<-factor(levels(AnalysisData$geo.code))
 all.geo<-as_tibble(rep(all.geo, each =30))
 colnames(all.geo)[1]<-"geo.code"
-all.geo$YEAR<-rep(seq(1985,2014,by=1), times =71)
+all.geo$YEAR<-rep(seq(1985,2014,by=1), times=nlevels(all.geo$geo.code))
 all.geo$COUNTRY<-all.geo$geo.code
 source("AddIncomeRegion.R")
 all.geo<-AddIncomeRegion(all.geo)
@@ -1024,15 +1095,18 @@ PercChangePlot<-PercChangePlot+theme_classic()+
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
 PercChangePlot
 
-ggsave("S1_Fig.eps", plot =PercChangePlot , device = "eps", scale = 1, width = 12, height = 10, units = "cm", dpi = 400, limitsize = TRUE)
-# ggsave("S1_Fig_size_test.eps", plot =PercChangePlot , device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 400, limitsize = TRUE)
+ggsave("./Output/S1_Text_Fig3.eps", plot =PercChangePlot , device = "eps", scale = 1, width = 12, height = 10, units = "cm", dpi = 400, limitsize = TRUE)
+# ggsave("./Output/S1_Text_Fig3.eps", plot =PercChangePlot , device = "eps", scale = 1, width = 13.2, height = 19, units = "cm", dpi = 400, limitsize = TRUE)
 # # 
-# tiff("S1_Fig_size_test.tiff", width = 13.2, height = 19, units = 'cm', res = 400, compression = 'lzw')
+# tiff("./Output/S1_Fig_size_test.tiff", width = 13.2, height = 19, units = 'cm', res = 400, compression = 'lzw')
 # PercChangePlot
 # dev.off()
-rm(CountryCurves,foo,all.geo)
+
+
+
 ######################################################
-# S2 Fig: 2014 Authors v. Editors
+# S1 Text Fig 4: 2014 Authors v. Editors 
+# Analyses of Inv. Simpons Diversity of authors and editors in 2014
 ######################################################
 
 ##############################################################
@@ -1043,44 +1117,82 @@ rm(CountryCurves,foo,all.geo)
 ##############################################################
 ##############################################################
 
-GEO<-read.csv("./Data/Editor.Author.Geo_2014.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
+# These files contain the number of editors and 1st authors from each country, income level, and region in 2014 
+GEO<-read.csv("./Data/Editor_Author_Geo_2014.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
 INCOME<-read.csv("./Data/Editor_Author_Income_2014.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
 REGION<-read.csv("./Data/Editor_Author_Region_2014.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
 
+#Add the percentage of Editors and Authors from each country, income level, and region
+SumEdGeo<-GEO %>% filter(CATEGORY=="Editor") %>% mutate(Pcnt=N/sum(N)*100)
+SumAuGeo<-GEO %>% filter(CATEGORY=="Author") %>% mutate(Pcnt=N/sum(N)*100)
+GEO<-bind_rows(SumEdGeo,SumAuGeo)
+GEO$Pcnt<-round(GEO$Pcnt, digits=2)
+
+SumEdInc<-INCOME %>% filter(CATEGORY=="Editor") %>% mutate(Pcnt=N/sum(N)*100)
+SumAuInc<-INCOME %>% filter(CATEGORY=="Author") %>% mutate(Pcnt=N/sum(N)*100)
+INCOME<-bind_rows(SumEdInc,SumAuInc)
+INCOME$Pcnt<-round(INCOME$Pcnt, digits=2)
+
+SumEdRegion<-REGION %>% filter(CATEGORY=="Editor") %>% mutate(Pcnt=N/sum(N)*100)
+SumAuRegion<-REGION %>% filter(CATEGORY=="Author") %>% mutate(Pcnt=N/sum(N)*100)
+REGION<-bind_rows(SumEdRegion,SumAuRegion)
+REGION$Pcnt<-round(REGION$Pcnt, digits=2)
+
+
 ############
 # CHI SQ TEST REGION ED v AU
-Region.tbl<- REGION %>% select(CATEGORY, REGION, n) 
-Region.tbl<-spread(Region.tbl,CATEGORY, n)
+Region.tbl<- REGION %>% select(CATEGORY, REGION, N) 
+Region.tbl<-spread(Region.tbl,CATEGORY, N)
 str(Region.tbl)
-A<-Region.tbl$Author
-B<-Region.tbl$Editor
-C<-cbind(A,B)
-Region.tbl<-as.table(C)
+Region_Au<-Region.tbl$Author
+Region_Ed<-Region.tbl$Editor
+Region_Au_Ed<-cbind(Region_Au,Region_Ed)
+Region.tbl<-as.table(Region_Au_Ed)
 chisq.test(Region.tbl) 
+rm(Region_Au,Region_Ed,Region_Au_Ed)
 ############
 
 ############
 # CHI SQ TEST INCOME ED v AU
-Income.tbl<- INCOME %>% select(CATEGORY, INCOME_LEVEL, n) 
-Income.tbl<-spread(Income.tbl,CATEGORY, n)
+Income.tbl<- INCOME %>% select(CATEGORY, INCOME_LEVEL, N) 
+Income.tbl<-spread(Income.tbl,CATEGORY, N)
 str(Income.tbl)
-A<-Income.tbl$Author
-B<-Income.tbl$Editor
-C<-cbind(A,B)
-Income.tbl<-as.table(C)
+Income_Au<-Income.tbl$Author
+Income_Ed<-Income.tbl$Editor
+Income_Au_Ed<-cbind(Income_Au,Income_Ed)
+Income.tbl<-as.table(Income_Au_Ed)
 chisq.test(Income.tbl) 
+rm(Income_Au,Income_Ed,Income_Au_Ed)
 ############
 
+###########
+# Inverse Simpson's Diversity of Editors and Authors in 2014
+###########
+
+# Author Geo Div in 2014 
+Au2014Div<-GEO %>% filter(CATEGORY=="Author") %>% select(geo.code,N) %>% spread(geo.code,N)
+Au2014Div[is.na(Au2014Div)] <- 0
+Au2014Div<-ungroup(Au2014Div)
+Au2014DivVal <- diversity(Au2014Div, index="invsimpson") #Need to strip away the journal and year columns for vegan to do the analysis
+Au2014DivVal
+# Editor Geo Div in 2014  
+Ed2014Div<-GEO %>% filter(CATEGORY=="Editor") %>% select(geo.code,N) %>% spread(geo.code,N)
+Ed2014Div[is.na(Ed2014Div)] <- 0
+Ed2014Div<-ungroup(Ed2014Div)
+Ed2014DivVal <- diversity(Ed2014Div, index="invsimpson") #Need to strip away the journal and year columns for vegan to do the analysis
+Ed2014DivVal
+
+
 ##############################################################
-# bar chart of top autor/editor countries  
+# S1 Text Fig 4: 2014 Authors v. Editors (bar chart of top autor/editor countries)  
 ##############################################################
 Author.Geo<-GEO %>% group_by(CATEGORY) %>% mutate(GeoRank = dense_rank(-N))
 source("AddIncomeRegion.R")
 Author.Geo$COUNTRY<-Author.Geo$geo.code
 Author.Geo<-AddIncomeRegion(Author.Geo)
 cutoff = 15 # This is how many countries you want on the chart, all the rest will be in "OTHER"
-editors<-Author.Geo %>% filter(CATEGORY=="Editors") %>% select (CATEGORY,geo.code,N,Pcnt,GeoRank, INCOME_LEVEL, REGION)
-authors<-Author.Geo %>% filter(CATEGORY=="Authors") %>% select (CATEGORY,geo.code,N,Pcnt,GeoRank, INCOME_LEVEL, REGION)
+editors<-Author.Geo %>% filter(CATEGORY=="Editor") %>% select (CATEGORY,geo.code,N,Pcnt,GeoRank, INCOME_LEVEL, REGION)
+authors<-Author.Geo %>% filter(CATEGORY=="Author") %>% select (CATEGORY,geo.code,N,Pcnt,GeoRank, INCOME_LEVEL, REGION)
 
 ##Countries in author list not in editor list
 AUbutnotEd<-anti_join(authors,editors,by="geo.code")
@@ -1119,13 +1231,14 @@ CountriesED<-CountriesED+theme_classic()+
         plot.margin=unit(c(1,1,1,1),"lines"),
         legend.background = element_rect(colour = 'black', size = 0.5, linetype='solid'))
 CountriesED
-ggsave("S2_Fig.eps", plot = CountriesED, scale = 1, width = 18.05, height = 12,dpi = 400, limitsize = TRUE)
-# tiff("S2_Fig_new_size_test.tiff", width = 18.05, height = 12, units = 'cm', res = 400, compression = 'lzw')
+ggsave("./Output/S1_Text_Fig4.eps", plot = CountriesED, scale = 1, width = 18.05, height = 12,dpi = 400, limitsize = TRUE)
+# tiff("./Output/S1_Text_Fig4.tiff", width = 18.05, height = 12, units = 'cm', res = 400, compression = 'lzw')
 # CountriesED
 # dev.off()
 
+
 ######################################################
-# S3 Fig: Geo Richness of EDITORS EACH YEAR BY JOURNAL 
+# S1 Text Fig 5: Geo Richness of EDITORS EACH YEAR BY JOURNAL 
 ######################################################
 
 # No. of editors on each journal's board in each year
@@ -1159,13 +1272,13 @@ JrnlRichnessFig<-JrnlRichnessFig+theme_bw()+
         strip.text = element_text(face = "italic", size = 6))
 JrnlRichnessFig
 
-ggsave("S3_Fig.eps", JrnlRichnessFig, device = "eps", scale = 1, width = 19, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
-# tiff("S3_Fig_size_test.tiff",width = 19, height = 13.2, units = 'cm', res = 400, compression = 'lzw')
+ggsave("./Output/S1_Text_Fig5.eps", JrnlRichnessFig, device = "eps", scale = 1, width = 19, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
+# tiff("./Output/S1_Text_Fig5.tiff",width = 19, height = 13.2, units = 'cm', res = 400, compression = 'lzw')
 # JrnlRichnessFig
 # dev.off()
 
 ######################################################
-# S4 Fig: Geo Diversity of EDITORS EACH YEAR split by JOURNAL
+# S1 Text Fig 6: Geo Diversity of EDITORS EACH YEAR split by JOURNAL
 ######################################################
 EdsPerCountryPerJrnlPerYr.LONG<-AnalysisData %>% group_by(JOURNAL, YEAR, geo.code) %>% summarize(Total = n_distinct(editor_id))
 EdsPerCountryPerJrnlPerYr.LONG[is.na(EdsPerCountryPerJrnlPerYr.LONG)] <- 0
@@ -1217,14 +1330,14 @@ JrnlDiversityFig<-JrnlDiversityFig+theme_bw()+
 JrnlDiversityFig
 # dev.off()
 
-ggsave("S4_Fig.eps", JrnlDiversityFig, device = "eps", scale = 1, width = 19, height = 13.2, units ="cm", dpi = 400, limitsize = TRUE)
-# tiff("S4_Fig_size_test.tiff", width = 19, height = 13.2, units = 'cm', res = 400, compression = 'lzw')
+ggsave("./Output/S1_Text_Fig6.eps", JrnlDiversityFig, device = "eps", scale = 1, width = 19, height = 13.2, units ="cm", dpi = 400, limitsize = TRUE)
+# tiff("./Output/S1_Text_Fig6.tiff", width = 19, height = 13.2, units = 'cm', res = 400, compression = 'lzw')
 # JrnlDiversityFig
 # dev.off()
 # 
 
 ######################################################
-# S5 Fig: Prop of EDITORS EACH YEAR FROM EACH REGION  plit by JOURNAL
+# S7 Fig: Prop of EDITORS EACH YEAR FROM EACH REGION  plit by JOURNAL
 ######################################################
 
 RegionyrJRNL<-AnalysisData %>% group_by(JOURNAL, YEAR, REGION) %>% summarize(Total = n_distinct(editor_id))
@@ -1261,13 +1374,13 @@ RegionyrJRNLFig<-RegionyrJRNLFig+theme_bw()+
 
 RegionyrJRNLFig
 
-ggsave("S5_Fig.eps", RegionyrJRNLFig, device = "eps", scale = 1, width = 19, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
-# tiff("S5_Fig_size_test.tiff",width = 19, height = 13.2,units = 'cm', res = 400, compression = 'lzw')
+ggsave("./Output/S1_Text_Fig7.eps", RegionyrJRNLFig, device = "eps", scale = 1, width = 19, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
+# tiff("./Output/S1_Text_Fig7.tiff",width = 19, height = 13.2,units = 'cm', res = 400, compression = 'lzw')
 # RegionyrJRNLFig
 # dev.off()
 
 ######################################################
-# S6 Fig: Geo Prop of EDITORS EACH YEAR FROM EACH INCOME CATEGORY  plit by JOURNAL
+# S1 Text Fig 8: Geo Prop of EDITORS EACH YEAR FROM EACH INCOME CATEGORY  plit by JOURNAL
 ######################################################
 
 INCOMEyrJRNL<-AnalysisData %>% group_by(JOURNAL, YEAR, INCOME_LEVEL) %>% summarize(Total = n_distinct(editor_id))
@@ -1302,7 +1415,7 @@ INCOMErJRNLFig<-INCOMErJRNLFig+theme_bw()+
 INCOMErJRNLFig
 
 
-ggsave("S6_Fig.eps", INCOMErJRNLFig, device = "eps", scale = 1, width = 19, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
-# tiff("S6_Fig_size_test.tiff", width = 19, height = 13.2,units = 'cm', res = 400, compression = 'lzw')
+ggsave("./Output/S1_Text_Fig8.eps", INCOMErJRNLFig, device = "eps", scale = 1, width = 19, height = 13.2, units = "cm", dpi = 400, limitsize = TRUE)
+# tiff("./Output/S1_Text_Fig8.tiff", width = 19, height = 13.2,units = 'cm', res = 400, compression = 'lzw')
 # INCOMErJRNLFig
 # dev.off()
