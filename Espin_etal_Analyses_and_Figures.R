@@ -148,17 +148,22 @@ droplevels(Espin$NAME)
 
 Espin<-add_row(Espin,JOURNAL="FUNECOL", YEAR=2005, VOLUME=19, ISSUE=1, TITLE="Associate.Editor", NAME="Gary R Bortolotti",FIRST_NAME="Gary", MIDDLE_NAME="R", LAST_NAME="Bortolotti", COUNTRY="Canada", CATEGORY="SE", editor_id=1153, geo.code="CAN", INCOME_LEVEL="High income: OECD", REGION="North America")
 Espin<-add_row(Espin,JOURNAL="FUNECOL", YEAR=2012, VOLUME=26, ISSUE=1, TITLE="Associate.Editor", FIRST_NAME="Barbara", LAST_NAME="Tschirren", NAME="Barbara Tschirren",COUNTRY="Switzerland", CATEGORY="SE",editor_id=369, geo.code="CHE", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-
 Espin<-add_row(Espin,JOURNAL="JANE", YEAR=1995, VOLUME=64, ISSUE=1, TITLE="SE", FIRST_NAME="Peter", LAST_NAME="Jarman", NAME="Peter Jarman",COUNTRY="Australia", CATEGORY="SE",editor_id=2838, geo.code="AUS", INCOME_LEVEL="High income: OECD", REGION="East Asia & Pacific")
 Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2005, VOLUME=74, ISSUE=1, TITLE="AE", FIRST_NAME="Lennart", LAST_NAME="Persson", NAME="Lennart Persson",COUNTRY="Sweden", CATEGORY="SE",editor_id=2221, geo.code="SWE", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=1999, VOLUME=68, ISSUE=1, TITLE="EIC", FIRST_NAME="Dave", LAST_NAME="Raffaelli", NAME="Dave Raffaelli",COUNTRY="UK", CATEGORY="EIC",editor_id=831, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2012, VOLUME=81, ISSUE=1, TITLE="AE", FIRST_NAME="Isabel", LAST_NAME="Smallegange", NAME="Isabel Smallegange",COUNTRY="UK", CATEGORY="SE",editor_id=1419, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=1999, VOLUME=68, ISSUE=1, TITLE="EIC", FIRST_NAME="Dave", LAST_NAME="Raffaelli", NAME="Dave Raffaelli",COUNTRY="United Kingdom", CATEGORY="EIC",editor_id=831, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2012, VOLUME=81, ISSUE=1, TITLE="AE", FIRST_NAME="Isabel", LAST_NAME="Smallegange", NAME="Isabel Smallegange",COUNTRY="United Kingdom", CATEGORY="SE",editor_id=1419, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
 Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2011, VOLUME=80, ISSUE=1, TITLE="AE", FIRST_NAME="Jason", LAST_NAME="Tylianakis", NAME="Jason Tylianakis",COUNTRY="New Zealand", CATEGORY="SE",editor_id=1917, geo.code="NZL", INCOME_LEVEL="High income: OECD", REGION="East Asia & Pacific")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2008, VOLUME=77, ISSUE=1, TITLE="AE", FIRST_NAME="Andrew", LAST_NAME="White", NAME="Andrew White",COUNTRY="UK", CATEGORY="SE",editor_id=229, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2011, VOLUME=80, ISSUE=1, TITLE="AE", FIRST_NAME="Sheena", LAST_NAME="Cotter", NAME="Sheena Cotter",COUNTRY="UK", CATEGORY="SE",editor_id=3306, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2008, VOLUME=77, ISSUE=1, TITLE="AE", FIRST_NAME="Andrew", LAST_NAME="White", NAME="Andrew White",COUNTRY="United Kingdom", CATEGORY="SE",editor_id=229, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2011, VOLUME=80, ISSUE=1, TITLE="AE", FIRST_NAME="Sheena", LAST_NAME="Cotter", NAME="Sheena Cotter",COUNTRY="United Kingdom", CATEGORY="SE",editor_id=3306, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
 Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2011, VOLUME=80, ISSUE=1, TITLE="AE", FIRST_NAME="John", LAST_NAME="Fryxell", NAME="John Fryxell",COUNTRY="Canada", CATEGORY="SE",editor_id=1585, geo.code="CAN", INCOME_LEVEL="High income: OECD", REGION="North America")
 Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2013, VOLUME=82, ISSUE=1, TITLE="AE", FIRST_NAME="Spence", LAST_NAME="Behmer", NAME="Spence Behmer",COUNTRY="USA", CATEGORY="SE",editor_id=3279, geo.code="USA", INCOME_LEVEL="High income: OECD", REGION="North America")
 Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2013, VOLUME=82, ISSUE=1, TITLE="SE", FIRST_NAME="Luca", LAST_NAME="Borger", NAME="Luca Borger",COUNTRY="France", CATEGORY="SE",editor_id=2129, geo.code="FRA", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2013, VOLUME=82, ISSUE=1, TITLE="AE", FIRST_NAME="Dylan", LAST_NAME="Childs", NAME="Dylan Childs",COUNTRY="United Kingdom", CATEGORY="SE",editor_id=3948, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2014, VOLUME=83, ISSUE=1, TITLE="AE", FIRST_NAME="Dylan", LAST_NAME="Childs", NAME="Dylan Childs",COUNTRY="United Kingdom", CATEGORY="SE",editor_id=3948, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2014, VOLUME=83, ISSUE=1, TITLE="AE", FIRST_NAME="Kate", LAST_NAME="Jones", NAME="Kate Jones",COUNTRY="United Kingdom", CATEGORY="SE",editor_id=3949, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="LECO", YEAR=2011, VOLUME=26, ISSUE=1, TITLE="Editorial.Board", FIRST_NAME="G", LAST_NAME="Zurlini", NAME="G Zurlini",COUNTRY="Italy", CATEGORY="SE",editor_id=1281, geo.code="ITA", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
+Espin<-add_row(Espin,JOURNAL="LECO", YEAR=1998, VOLUME=13, ISSUE=1, TITLE="Editorial.Board", FIRST_NAME="G", MIDDLE_NAME="P", LAST_NAME="Malanson", NAME="G P Malanson",COUNTRY="Canada", CATEGORY="SE",editor_id=1223, geo.code="CAN", INCOME_LEVEL="High income: OECD", REGION="North America")
+Espin<-add_row(Espin,JOURNAL="LECO", YEAR=2011, VOLUME=16, ISSUE=1, TITLE="Editorial.Board", FIRST_NAME="J", LAST_NAME="Nassauer", NAME="J Nassauer",COUNTRY="USA", CATEGORY="SE",editor_id=1781, geo.code="USA", INCOME_LEVEL="High income: OECD", REGION="North America")
 
 
 delete1<-Espin %>% filter(NAME=="Jon Wright" & JOURNAL=="JANE" & YEAR==2013)
@@ -174,13 +179,6 @@ delete8<-Espin %>% filter(NAME=="M Green Turner" & JOURNAL=="LECO" & (YEAR==2012
 delete_Espin<-rbind(delete1,delete2,delete3,delete4,delete5,delete6,delete7,delete8)
 Espin<-setdiff(Espin,delete_Espin)
 rm(delete1,delete2,delete3,delete4,delete5,delete6,delete7,delete8,delete_Espin)
-
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2013, VOLUME=82, ISSUE=1, TITLE="AE", FIRST_NAME="Dylan", LAST_NAME="Childs", NAME="Dylan Childs",COUNTRY="UK", CATEGORY="SE",editor_id=3948, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2014, VOLUME=83, ISSUE=1, TITLE="AE", FIRST_NAME="Dylan", LAST_NAME="Childs", NAME="Dylan Childs",COUNTRY="UK", CATEGORY="SE",editor_id=3948, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2014, VOLUME=83, ISSUE=1, TITLE="AE", FIRST_NAME="Kate", LAST_NAME="Jones", NAME="Kate Jones",COUNTRY="UK", CATEGORY="SE",editor_id=3949, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="LECO", YEAR=2011, VOLUME=26, ISSUE=1, TITLE="Editorial.Board", FIRST_NAME="G", LAST_NAME="Zurlini", NAME="G Zurlini",COUNTRY="Italy", CATEGORY="SE",editor_id=1281, geo.code="ITA", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="LECO", YEAR=1998, VOLUME=13, ISSUE=1, TITLE="Editorial.Board", FIRST_NAME="G", MIDDLE_NAME="P", LAST_NAME="Malanson", NAME="G P Malanson",COUNTRY="Canada", CATEGORY="SE",editor_id=1223, geo.code="CAN", INCOME_LEVEL="High income: OECD", REGION="North America")
-Espin<-add_row(Espin,JOURNAL="LECO", YEAR=2011, VOLUME=16, ISSUE=1, TITLE="Editorial.Board", FIRST_NAME="J", LAST_NAME="Nassauer", NAME="J Nassauer",COUNTRY="USA", CATEGORY="SE",editor_id=1781, geo.code="USA", INCOME_LEVEL="High income: OECD", REGION="North America")
 
 
 
