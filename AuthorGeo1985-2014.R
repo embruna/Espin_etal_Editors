@@ -48,7 +48,7 @@ str(AuthorCountries)
 AuthorCountries<-AuthorCountries %>%  group_by(YEAR) %>% mutate(Pcnt_Pubs= (Articles/sum(Articles)*100)) %>% rename(N_Articles = Articles)
 AuthorCountries
 AuthorCountries$COUNTRY[AuthorCountries$COUNTRY=="FED REP GER"] <- "GERMANY"
-write.csv(AuthorCountries, file="./Data/AuthorCountries_1985_2014.csv", row.names = T) #export it as a csv file
+write.csv(AuthorCountries, file="./Data/AuthorCountries_1985_2014.csv", row.names = F) #export it as a csv file
 # 
 # This is to calclulate the total articles over all years.
 
