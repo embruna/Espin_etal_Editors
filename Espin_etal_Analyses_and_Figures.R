@@ -19,8 +19,6 @@
 # editorial boards in environmental biology. PLOS Biology.
 
 # If you use these datasets in publications please cite both the data packages and the original articles.
-# If using this code please cite the Zenodo archive of v.1 of this code.
-
 
 ##############################################################
 ##############################################################
@@ -87,104 +85,6 @@ droplevels(Cho$COUNTRY)
 
 # Data on Editors from Espin et al. 2017 
 Espin<-read.csv("./Data/Drayd.Espin.v1.csv", dec=".", header = TRUE, sep = ",", check.names=FALSE )
-#Corrections to Espin
-Espin$COUNTRY<-as.character(Espin$COUNTRY)
-Espin$COUNTRY[Espin$COUNTRY=="Czech Republicch Republic"] <- "Czech Republic"
-Espin$COUNTRY[Espin$COUNTRY=="Brazil And UK"] <- "UK"
-Espin$COUNTRY[Espin$COUNTRY=="Australiatralia"] <- "Australia" 
-Espin$COUNTRY[Espin$COUNTRY=="P.R. China"] <- "China"
-Espin$COUNTRY[Espin$COUNTRY=="IRAN"] <- "Iran"
-Espin$COUNTRY[Espin$COUNTRY=="ITALY"] <- "Italy"
-Espin$COUNTRY[Espin$COUNTRY=="MEXICO"] <- "Mexico"
-Espin$COUNTRY[Espin$COUNTRY=="The Netherlands"] <- "Netherlands"
-Espin$COUNTRY[Espin$COUNTRY=="NewZealand"] <- "New Zealand"
-Espin$COUNTRY[Espin$COUNTRY=="PuertoRico"] <- "Puerto Rico"
-Espin$COUNTRY[Espin$COUNTRY=="UK"] <- "United Kingdom"
-Espin$COUNTRY[Espin$COUNTRY=="United States"] <- "USA"
-Espin$COUNTRY[Espin$COUNTRY=="Usa"] <- "USA"
-Espin$COUNTRY[Espin$COUNTRY=="UsA"] <- "USA"
-Espin$COUNTRY[Espin$COUNTRY=="USSR"] <- "Russia"
-Espin$COUNTRY[Espin$LAST_NAME=="Bearhop" & Espin$JOURNAL=="JANE"] <- "Northern Ireland"
-Espin$COUNTRY[Espin$LAST_NAME=="Lawton" & Espin$JOURNAL=="JANE"] <- "United Kingdom"
-Espin$COUNTRY[Espin$LAST_NAME=="Miguez" & Espin$FIRST_NAME=="Fernando"] <- "USA"
-Espin$COUNTRY[Espin$LAST_NAME=="Vlek" & Espin$JOURNAL=="AGRONOMY"] <- "Germany"
-Espin$COUNTRY[Espin$LAST_NAME=="Korner" & Espin$JOURNAL=="FUNECOL" & Espin$YEAR>1989] <- "Switzerland"
-
-Espin$COUNTRY<-as.factor(Espin$COUNTRY)
-droplevels(Espin$COUNTRY)
-
-Espin$editor_id[Espin$editor_id==1034] <- 1033 #duplicated due to misspelled named: E VanDer and E Van Der Maarel and VanDerMaarel 
-Espin$editor_id[Espin$editor_id==1035] <- 1033 #duplicated due to misspelled named: E VanDer and E Van Der Maarel and VanDerMaarel 
-Espin$editor_id[Espin$LAST_NAME=="Tomkins"] <- 894
-Espin$editor_id[Espin$LAST_NAME=="Vlek" & Espin$JOURNAL=="AGRONOMY"] <- 2947
-
-Espin$geo.code[Espin$LAST_NAME=="Lawton" & Espin$JOURNAL=="JANE"] <- "GBR"
-Espin$geo.code[Espin$LAST_NAME=="Bearhop" & Espin$JOURNAL=="JANE"] <- "GBR"
-
-
-
-Espin$LAST_NAME<-as.character(Espin$LAST_NAME)
-Espin$LAST_NAME[Espin$LAST_NAME=="Tomkins" & Espin$JOURNAL=="JANE"] <- "Tompkins"
-Espin$LAST_NAME<-as.factor(Espin$LAST_NAME)
-Espin$LAST_NAME[Espin$LAST_NAME=="van der Maarel" & Espin$editor_id==1033] <- "VanDerMaarel"
-Espin$LAST_NAME[Espin$LAST_NAME=="VanDer" & Espin$editor_id==1033] <- "VanDerMaarel"
-droplevels(Espin$LAST_NAME)
-
-
-Espin$FIRST_NAME<-as.character(Espin$FIRST_NAME)
-Espin$FIRST_NAME[Espin$LAST_NAME=="Roulin"] <- "Alexandre"
-Espin$FIRST_NAME[Espin$LAST_NAME=="Vlek" & Espin$YEAR=="1986"] <- "P"
-Espin$FIRST_NAME[Espin$LAST_NAME=="Wilson" & Espin$YEAR=="1986"] <- "P"
-Espin$FIRST_NAME<-as.factor(Espin$FIRST_NAME)
-droplevels(Espin$FIRST_NAME)
-
-Espin$NAME<-as.character(Espin$NAME)
-Espin$NAME[Espin$LAST_NAME=="Roulin"] <- "Alexandre Roulin"
-Espin$NAME[Espin$editor_id==1033] <- "E VanDerMaarel"
-Espin$NAME<-as.factor(Espin$NAME)
-droplevels(Espin$NAME)
-
-
-
-Espin<-add_row(Espin,JOURNAL="FUNECOL", YEAR=2005, VOLUME=19, ISSUE=1, TITLE="Associate.Editor", NAME="Gary R Bortolotti",FIRST_NAME="Gary", MIDDLE_NAME="R", LAST_NAME="Bortolotti", COUNTRY="Canada", CATEGORY="SE", editor_id=1153, geo.code="CAN", INCOME_LEVEL="High income: OECD", REGION="North America")
-Espin<-add_row(Espin,JOURNAL="FUNECOL", YEAR=2012, VOLUME=26, ISSUE=1, TITLE="Associate.Editor", FIRST_NAME="Barbara", LAST_NAME="Tschirren", NAME="Barbara Tschirren",COUNTRY="Switzerland", CATEGORY="SE",editor_id=369, geo.code="CHE", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=1995, VOLUME=64, ISSUE=1, TITLE="SE", FIRST_NAME="Peter", LAST_NAME="Jarman", NAME="Peter Jarman",COUNTRY="Australia", CATEGORY="SE",editor_id=2838, geo.code="AUS", INCOME_LEVEL="High income: OECD", REGION="East Asia & Pacific")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2005, VOLUME=74, ISSUE=1, TITLE="AE", FIRST_NAME="Lennart", LAST_NAME="Persson", NAME="Lennart Persson",COUNTRY="Sweden", CATEGORY="SE",editor_id=2221, geo.code="SWE", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=1999, VOLUME=68, ISSUE=1, TITLE="EIC", FIRST_NAME="Dave", LAST_NAME="Raffaelli", NAME="Dave Raffaelli",COUNTRY="United Kingdom", CATEGORY="EIC",editor_id=831, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2012, VOLUME=81, ISSUE=1, TITLE="AE", FIRST_NAME="Isabel", LAST_NAME="Smallegange", NAME="Isabel Smallegange",COUNTRY="United Kingdom", CATEGORY="SE",editor_id=1419, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2011, VOLUME=80, ISSUE=1, TITLE="AE", FIRST_NAME="Jason", LAST_NAME="Tylianakis", NAME="Jason Tylianakis",COUNTRY="New Zealand", CATEGORY="SE",editor_id=1917, geo.code="NZL", INCOME_LEVEL="High income: OECD", REGION="East Asia & Pacific")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2008, VOLUME=77, ISSUE=1, TITLE="AE", FIRST_NAME="Andrew", LAST_NAME="White", NAME="Andrew White",COUNTRY="United Kingdom", CATEGORY="SE",editor_id=229, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2011, VOLUME=80, ISSUE=1, TITLE="AE", FIRST_NAME="Sheena", LAST_NAME="Cotter", NAME="Sheena Cotter",COUNTRY="United Kingdom", CATEGORY="SE",editor_id=3306, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2011, VOLUME=80, ISSUE=1, TITLE="AE", FIRST_NAME="John", LAST_NAME="Fryxell", NAME="John Fryxell",COUNTRY="Canada", CATEGORY="SE",editor_id=1585, geo.code="CAN", INCOME_LEVEL="High income: OECD", REGION="North America")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2013, VOLUME=82, ISSUE=1, TITLE="AE", FIRST_NAME="Spence", LAST_NAME="Behmer", NAME="Spence Behmer",COUNTRY="USA", CATEGORY="SE",editor_id=3279, geo.code="USA", INCOME_LEVEL="High income: OECD", REGION="North America")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2013, VOLUME=82, ISSUE=1, TITLE="SE", FIRST_NAME="Luca", LAST_NAME="Borger", NAME="Luca Borger",COUNTRY="France", CATEGORY="SE",editor_id=2129, geo.code="FRA", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2013, VOLUME=82, ISSUE=1, TITLE="AE", FIRST_NAME="Dylan", LAST_NAME="Childs", NAME="Dylan Childs",COUNTRY="United Kingdom", CATEGORY="SE",editor_id=3948, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2014, VOLUME=83, ISSUE=1, TITLE="AE", FIRST_NAME="Dylan", LAST_NAME="Childs", NAME="Dylan Childs",COUNTRY="United Kingdom", CATEGORY="SE",editor_id=3948, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="JANE", YEAR=2014, VOLUME=83, ISSUE=1, TITLE="AE", FIRST_NAME="Kate", LAST_NAME="Jones", NAME="Kate Jones",COUNTRY="United Kingdom", CATEGORY="SE",editor_id=3949, geo.code="GBR", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="LECO", YEAR=2011, VOLUME=26, ISSUE=1, TITLE="Editorial.Board", FIRST_NAME="G", LAST_NAME="Zurlini", NAME="G Zurlini",COUNTRY="Italy", CATEGORY="SE",editor_id=1281, geo.code="ITA", INCOME_LEVEL="High income: OECD", REGION="Europe & Central Asia")
-Espin<-add_row(Espin,JOURNAL="LECO", YEAR=1998, VOLUME=13, ISSUE=1, TITLE="Editorial.Board", FIRST_NAME="G", MIDDLE_NAME="P", LAST_NAME="Malanson", NAME="G P Malanson",COUNTRY="Canada", CATEGORY="SE",editor_id=1223, geo.code="CAN", INCOME_LEVEL="High income: OECD", REGION="North America")
-Espin<-add_row(Espin,JOURNAL="LECO", YEAR=2011, VOLUME=16, ISSUE=1, TITLE="Editorial.Board", FIRST_NAME="J", LAST_NAME="Nassauer", NAME="J Nassauer",COUNTRY="USA", CATEGORY="SE",editor_id=1781, geo.code="USA", INCOME_LEVEL="High income: OECD", REGION="North America")
-
-
-delete1<-Espin %>% filter(NAME=="Jon Wright" & JOURNAL=="JANE" & YEAR==2013)
-delete2<-Espin %>% filter(NAME=="Chris Thomas" & JOURNAL=="JANE" & YEAR==2013)
-delete3<-Espin %>% filter(NAME=="Kevin McCann" & JOURNAL=="JANE" & YEAR==2012)
-delete4<-Espin %>% filter(NAME=="Peter Bennett" & JOURNAL=="JANE" & YEAR==2013)
-delete5<-Espin %>% filter(NAME=="Andrew Beckerman" & JOURNAL=="JANE" & YEAR==2013)
-delete6<-Espin %>% filter(NAME=="J A Wiens" & JOURNAL=="LECO" & (YEAR==2012 | YEAR==2013))
-delete7<-Espin %>% filter(NAME=="B L Turner" & JOURNAL=="LECO" & (YEAR==2012 | YEAR==2013))
-delete8<-Espin %>% filter(NAME=="M Green Turner" & JOURNAL=="LECO" & (YEAR==2012 | YEAR==2013))
-
-
-delete_Espin<-rbind(delete1,delete2,delete3,delete4,delete5,delete6,delete7,delete8)
-Espin<-setdiff(Espin,delete_Espin)
-rm(delete1,delete2,delete3,delete4,delete5,delete6,delete7,delete8,delete_Espin)
-
-
-
-
-write.csv(Espin, file="./Data/Drayd.Espin.v1_upload.csv", row.names = F) #export it as a csv file
-
 
 #Bind the datasets together
 ALLDATA<-bind_rows(Cho,Espin, id=NULL)
